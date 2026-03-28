@@ -1,0 +1,408 @@
+/* ============================================
+   TENTANG KAMI PAGE - CSS
+   ============================================ */
+
+:root {
+    --brand-green: #719e32;
+    --brand-accent: #f09810;
+    --surface-light: #f8f6f0;
+    --text-dark: #44444a;
+    --text-muted: #6a6a72;
+    --white: #ffffff;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --shadow-card: 0 4px 12px rgba(68, 68, 74, 0.08);
+    --shadow-soft: 0 8px 20px rgba(68, 68, 74, 0.12);
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.fade-up.delay-1 {
+    transition-delay: 0.12s;
+}
+
+.fade-up.delay-2 {
+    transition-delay: 0.22s;
+}
+
+.fade-up.delay-3 {
+    transition-delay: 0.32s;
+}
+
+.fade-up.delay-4 {
+    transition-delay: 0.42s;
+}
+
+.fade-up.delay-5 {
+    transition-delay: 0.52s;
+}
+
+.fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   LAYOUT & CONTAINER
+   ============================================ */
+
+.tentang-page {
+    width: 100%;
+}
+
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ============================================
+   SECTION HEAD (reusable component)
+   ============================================ */
+
+.section-head {
+    margin: 0 auto 48px;
+    text-align: center;
+    max-width: 700px;
+}
+
+.section-kicker {
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brand-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.section-subtitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ============================================
+   ABOUT INTRO SECTION
+   ============================================ */
+
+.about-intro {
+    padding: 80px 0;
+    background: var(--surface-light);
+}
+
+.about-intro__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-intro__content {
+    max-width: 520px;
+}
+
+.about-intro__kicker {
+    display: inline-block;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brand-accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.about-intro__title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+}
+
+.about-intro__description {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.about-intro__subtext {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+}
+
+.about-intro__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-intro__image-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, var(--brand-green) 0%, #5f8628 100%);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-intro__image-placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.2), transparent 40%);
+    pointer-events: none;
+}
+
+.about-intro__image-placeholder i {
+    font-size: 140px;
+    color: rgba(255, 255, 255, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   VISION & MISSION SECTION
+   ============================================ */
+
+.vision-mission {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.vision-mission__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* Vision Card */
+
+.vision-card {
+    background: linear-gradient(135deg, var(--brand-green) 0%, #5f8628 100%);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.vision-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.15), transparent 40%);
+    pointer-events: none;
+}
+
+.vision-card__header {
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.vision-card__icon {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+    opacity: 0.8;
+}
+
+.vision-card__title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.vision-card__content {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.95);
+    position: relative;
+    z-index: 1;
+}
+
+/* Mission Card */
+
+.mission-card {
+    background: linear-gradient(135deg, var(--brand-accent) 0%, #e08c0f 100%);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.mission-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.15), transparent 40%);
+    pointer-events: none;
+}
+
+.mission-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+}
+
+.mission-card__header {
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.mission-card__icon {
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+    opacity: 0.8;
+}
+
+.mission-card__title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.mission-card__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.mission-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.mission-item__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.mission-item__text {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+}
+
+/* ============================================
+   BUSINESS VALUES SECTION
+   ============================================ */
+
+.business-values {
+    padding: 80px 0;
+    background: var(--surface-light);
+}
+
+.business-values .section-head {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.values-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.values-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-soft);
+}
+
+.values-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--brand-green);
+    color: var(--white);
+    border-radius: var(--radius-md);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.values-card__icon--accent {
+    background: var(--brand-accent);
+}
+
+.values-card__title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.values-card__text {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* ============================================
+   RESPONSIVE (Desktop Only - No Media Queries)
+   ============================================ */
+
+/* This is desktop-only CSS - no mobile breakpoints */
