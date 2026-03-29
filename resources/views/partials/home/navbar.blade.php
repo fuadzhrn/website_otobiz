@@ -1,7 +1,7 @@
 <header class="site-header" id="home">
     <div class="container navbar-wrap">
         <a href="{{ route('home') }}" class="brand-logo" aria-label="OTOBIZ Home">
-            <img src="{{ asset('assets/images/logo-otobiz.png') }}" alt="Logo OTOBIZ" class="brand-logo__image" />
+            <img src="{{ asset('assets/images/logo_otobiz.jpeg') }}" alt="Logo OTOBIZ" class="brand-logo__image" />
         </a>
 
         <nav class="main-nav" aria-label="Navigasi utama">
