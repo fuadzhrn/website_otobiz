@@ -13,3 +13,7 @@ Route::get('/tentang', function () {
 Route::get('/mekanisme', function () {
     return view('mekanisme');
 })->name('mekanisme');
+
+Route::get('/produk', function () {
+    return view('produk');
+})->name('produk');
