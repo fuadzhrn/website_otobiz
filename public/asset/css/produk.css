@@ -737,3 +737,447 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+@media (max-width: 1279px) {
+    .produk-page .container {
+        padding: 0 24px;
+    }
+
+    .produk-hero {
+        padding: 110px 0 66px;
+    }
+
+    .produk-hero__title {
+        font-size: 2.5rem;
+    }
+
+    .produk-hero__image {
+        height: 390px;
+    }
+
+    .produk-packages,
+    .produk-units,
+    .produk-specs,
+    .produk-simulation,
+    .produk-cta {
+        padding: 74px 0;
+    }
+
+    .produk-head__title {
+        font-size: 2.05rem;
+    }
+
+    .produk-package-card__price {
+        font-size: 1.8rem;
+    }
+
+    .produk-gallery__main {
+        height: 290px;
+    }
+
+    .produk-cta__inner {
+        padding: 44px;
+    }
+
+    .produk-cta__title {
+        font-size: 1.94rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .produk-page .container {
+        padding: 0 20px;
+    }
+
+    .produk-head {
+        margin-bottom: 30px;
+    }
+
+    .produk-head__title {
+        font-size: 1.86rem;
+    }
+
+    .produk-head__desc {
+        font-size: 0.96rem;
+    }
+
+    .produk-hero {
+        padding: 98px 0 58px;
+    }
+
+    .produk-hero__wrap {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .produk-hero__content,
+    .produk-hero__visual {
+        max-width: 100%;
+    }
+
+    .produk-hero__title {
+        font-size: 2.18rem;
+    }
+
+    .produk-hero__desc {
+        font-size: 0.98rem;
+        line-height: 1.72;
+        max-width: 100%;
+    }
+
+    .produk-hero__actions {
+        flex-wrap: wrap;
+    }
+
+    .produk-hero__image {
+        height: 340px;
+    }
+
+    .produk-packages,
+    .produk-units,
+    .produk-specs,
+    .produk-simulation,
+    .produk-cta {
+        padding: 64px 0;
+    }
+
+    .produk-package-grid {
+        gap: 16px;
+    }
+
+    .produk-package-card {
+        padding: 24px 20px;
+    }
+
+    .produk-package-card__name {
+        font-size: 1.24rem;
+    }
+
+    .produk-package-card__actions {
+        flex-wrap: wrap;
+    }
+
+    .produk-unit-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .produk-unit-card__image {
+        height: 220px;
+    }
+
+    .produk-specs__layout {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .produk-specs-card,
+    .produk-gallery,
+    .produk-calculator,
+    .produk-result-card {
+        padding: 20px;
+    }
+
+    .produk-specs-list__row {
+        grid-template-columns: 150px 1fr;
+    }
+
+    .produk-gallery__main {
+        height: 300px;
+    }
+
+    .produk-simulation__layout {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .produk-field input {
+        height: 44px;
+    }
+
+    .produk-cta__inner {
+        padding: 36px 30px;
+    }
+
+    .produk-cta__title {
+        font-size: 1.78rem;
+    }
+
+    .produk-cta__actions {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 767px) {
+    .produk-page .container {
+        padding: 0 16px;
+    }
+
+    .produk-hero {
+        padding: 88px 0 50px;
+    }
+
+    .produk-hero__badge {
+        font-size: 0.76rem;
+        padding: 7px 11px;
+        margin-bottom: 12px;
+    }
+
+    .produk-hero__title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    .produk-hero__desc {
+        font-size: 0.93rem;
+        line-height: 1.64;
+        margin-bottom: 16px;
+    }
+
+    .produk-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .produk-hero__actions .produk-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .produk-hero__trust {
+        font-size: 0.84rem;
+    }
+
+    .produk-hero__image {
+        height: 260px;
+    }
+
+    .produk-packages,
+    .produk-units,
+    .produk-specs,
+    .produk-simulation,
+    .produk-cta {
+        padding: 54px 0;
+    }
+
+    .produk-head {
+        margin-bottom: 24px;
+    }
+
+    .produk-head__kicker {
+        font-size: 0.78rem;
+        margin-bottom: 8px;
+    }
+
+    .produk-head__title {
+        font-size: 1.56rem;
+        margin-bottom: 8px;
+    }
+
+    .produk-head__desc {
+        font-size: 0.92rem;
+        line-height: 1.62;
+    }
+
+    .produk-package-grid,
+    .produk-unit-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .produk-package-card {
+        padding: 22px 16px;
+        border-radius: 18px;
+    }
+
+    .produk-package-card__top {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .produk-package-card__name {
+        font-size: 1.14rem;
+    }
+
+    .produk-package-card__price {
+        font-size: 1.58rem;
+    }
+
+    .produk-package-card__benefits,
+    .produk-package-card__meta {
+        font-size: 0.9rem;
+    }
+
+    .produk-package-card__actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .produk-package-card__actions .produk-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .produk-packages__note {
+        margin-top: 14px;
+        font-size: 0.82rem;
+    }
+
+    .produk-units__filters,
+    .produk-specs__switch {
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .produk-units__filters::-webkit-scrollbar,
+    .produk-specs__switch::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .produk-filter,
+    .produk-switch {
+        flex: 0 0 auto;
+        font-size: 0.86rem;
+        padding: 8px 12px;
+    }
+
+    .produk-unit-card__image {
+        height: 210px;
+    }
+
+    .produk-unit-card__body {
+        padding: 14px;
+    }
+
+    .produk-unit-card__name {
+        font-size: 1.08rem;
+    }
+
+    .produk-unit-card__meta,
+    .produk-unit-card__desc {
+        font-size: 0.9rem;
+    }
+
+    .produk-specs-card,
+    .produk-gallery,
+    .produk-calculator,
+    .produk-result-card {
+        border-radius: 16px;
+        padding: 16px;
+    }
+
+    .produk-specs-card__name,
+    .produk-calculator__title,
+    .produk-result-card__title {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+
+    .produk-specs-list__row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 9px 0;
+    }
+
+    .produk-specs-list__row dt,
+    .produk-specs-list__row dd {
+        font-size: 0.88rem;
+    }
+
+    .produk-gallery__main {
+        height: 220px;
+    }
+
+    .produk-gallery__thumb img {
+        height: 70px;
+    }
+
+    .produk-field span {
+        font-size: 0.82rem;
+    }
+
+    .produk-field input {
+        height: 42px;
+        font-size: 0.9rem;
+    }
+
+    .produk-simulation__disclaimer {
+        font-size: 0.8rem;
+    }
+
+    .produk-result-list__row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        padding: 9px 10px;
+    }
+
+    .produk-result-list__row span,
+    .produk-result-list__row strong,
+    .produk-simulation-points p {
+        font-size: 0.88rem;
+    }
+
+    .produk-cta__inner {
+        border-radius: 20px;
+        padding: 28px 20px;
+        text-align: center;
+    }
+
+    .produk-cta__title {
+        font-size: 1.48rem;
+    }
+
+    .produk-cta__desc {
+        font-size: 0.92rem;
+        line-height: 1.62;
+        margin-bottom: 16px;
+    }
+
+    .produk-cta__actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .produk-cta__actions .produk-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .produk-page .container {
+        padding: 0 14px;
+    }
+
+    .produk-hero {
+        padding-top: 84px;
+    }
+
+    .produk-hero__title {
+        font-size: 1.62rem;
+    }
+
+    .produk-head__title {
+        font-size: 1.42rem;
+    }
+
+    .produk-package-card,
+    .produk-specs-card,
+    .produk-gallery,
+    .produk-calculator,
+    .produk-result-card,
+    .produk-cta__inner {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+}

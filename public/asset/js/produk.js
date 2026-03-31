@@ -1,13 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
     const animatedItems = document.querySelectorAll(".fade-up");
     const unitFilters = document.querySelectorAll(".produk-filter");
+    const filterWrap = document.getElementById("produk-unit-filters");
     const unitCards = document.querySelectorAll(".produk-unit-card");
     const specSwitches = document.querySelectorAll(".produk-switch");
+    const specSwitchWrap = document.getElementById("produk-spec-switch");
     const specName = document.getElementById("spec-name");
     const specList = document.getElementById("produk-spec-list");
     const galleryMain = document.getElementById("produk-gallery-main");
     const galleryThumbs = document.getElementById("produk-gallery-thumbs");
     const calcButton = document.getElementById("btn-hitung-simulasi");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const centerOnSmallScreen = (el, wrap) => {
+        if (!el || !wrap || window.innerWidth > 767) {
+            return;
+        }
+
+        el.scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest"
+        });
+    };
 
     const specsData = {
         confero: {
@@ -96,6 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const show = filter === "all" || category === filter;
                 card.classList.toggle("is-hidden", !show);
             });
+
+            centerOnSmallScreen(button, filterWrap);
         });
     });
 
@@ -104,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
             specSwitches.forEach((item) => item.classList.remove("is-active"));
             button.classList.add("is-active");
             updateSpecView(button.getAttribute("data-unit") || "confero");
+            centerOnSmallScreen(button, specSwitchWrap);
         });
     });
 
@@ -144,21 +162,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        {
-            threshold: 0.18,
-            rootMargin: "0px 0px -40px 0px"
-        }
-    );
+    if (prefersReducedMotion) {
+        animatedItems.forEach((item) => item.classList.add("is-visible"));
+    } else {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: window.innerWidth <= 767 ? 0.1 : 0.18,
+                rootMargin: window.innerWidth <= 767 ? "0px 0px -18px 0px" : "0px 0px -40px 0px"
+            }
+        );
 
-    animatedItems.forEach((item) => observer.observe(item));
+        animatedItems.forEach((item) => observer.observe(item));
+    }
     updateSpecView("confero");
 });

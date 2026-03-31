@@ -604,3 +604,446 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+@media (max-width: 1279px) {
+    .container {
+        padding: 0 24px;
+    }
+
+    .mekanisme-hero {
+        min-height: 70vh;
+    }
+
+    .mekanisme-hero__content {
+        max-width: 680px;
+        padding: 52px 0;
+    }
+
+    .mekanisme-hero__title {
+        font-size: 2.78rem;
+    }
+
+    .mekanisme-head {
+        margin-bottom: 36px;
+    }
+
+    .mekanisme-head__title {
+        font-size: 2.15rem;
+    }
+
+    .business-model-section,
+    .flow-section,
+    .terms-section,
+    .faq-section,
+    .mekanisme-cta-section {
+        padding: 76px 0;
+    }
+
+    .model-card-grid {
+        gap: 16px;
+    }
+
+    .flow-timeline::before {
+        left: 10%;
+        right: 10%;
+    }
+
+    .terms-grid {
+        gap: 12px;
+    }
+
+    .mekanisme-cta {
+        padding: 44px;
+    }
+
+    .mekanisme-cta__title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .mekanisme-hero {
+        min-height: 62vh;
+        background-position: center right;
+    }
+
+    .mekanisme-hero__content {
+        max-width: 640px;
+        padding: 44px 0;
+    }
+
+    .mekanisme-hero__title {
+        font-size: 2.3rem;
+        line-height: 1.2;
+    }
+
+    .mekanisme-hero__desc {
+        font-size: 0.98rem;
+        line-height: 1.72;
+        max-width: 560px;
+    }
+
+    .mekanisme-hero__actions {
+        flex-wrap: wrap;
+    }
+
+    .mekanisme-hero__trust {
+        flex-wrap: wrap;
+    }
+
+    .mekanisme-subnav {
+        top: 72px;
+    }
+
+    .mekanisme-subnav__inner {
+        gap: 8px;
+        padding: 10px 0;
+    }
+
+    .mekanisme-subnav__link {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .mekanisme-head {
+        margin-bottom: 32px;
+    }
+
+    .mekanisme-head__title {
+        font-size: 1.95rem;
+    }
+
+    .mekanisme-head__desc {
+        font-size: 0.97rem;
+    }
+
+    .business-model-section,
+    .flow-section,
+    .terms-section,
+    .faq-section,
+    .mekanisme-cta-section {
+        padding: 66px 0;
+    }
+
+    .model-card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .model-card--dark {
+        grid-column: 1 / -1;
+    }
+
+    .flow-timeline {
+        gap: 12px;
+    }
+
+    .flow-timeline::before {
+        left: 9%;
+        right: 9%;
+    }
+
+    .flow-step {
+        padding: 16px 14px;
+    }
+
+    .terms-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .faq-wrap {
+        max-width: 100%;
+    }
+
+    .faq-question {
+        padding: 15px 16px;
+        font-size: 0.95rem;
+    }
+
+    .faq-answer p {
+        padding: 0 16px 15px;
+    }
+
+    .mekanisme-cta {
+        padding: 38px 30px;
+    }
+
+    .mekanisme-cta__title {
+        font-size: 1.86rem;
+    }
+
+    .mekanisme-cta__actions {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .mekanisme-hero {
+        min-height: 56vh;
+        align-items: flex-end;
+    }
+
+    .mekanisme-hero__overlay {
+        background: linear-gradient(120deg, rgba(26, 28, 33, 0.9) 0%, rgba(26, 28, 33, 0.82) 56%, rgba(26, 28, 33, 0.68) 100%);
+    }
+
+    .mekanisme-hero__content {
+        max-width: 100%;
+        padding: 36px 0 32px;
+    }
+
+    .mekanisme-hero__kicker {
+        font-size: 0.76rem;
+        margin-bottom: 10px;
+    }
+
+    .mekanisme-hero__title {
+        font-size: 1.86rem;
+        margin-bottom: 12px;
+    }
+
+    .mekanisme-hero__desc {
+        font-size: 0.94rem;
+        line-height: 1.66;
+        margin-bottom: 20px;
+    }
+
+    .mekanisme-hero__actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .btn--hero-primary,
+    .btn--hero-ghost {
+        width: 100%;
+        text-align: center;
+        padding: 11px 18px;
+    }
+
+    .mekanisme-hero__trust {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .mekanisme-hero__trust-item {
+        font-size: 0.79rem;
+        padding: 7px 10px;
+    }
+
+    .mekanisme-subnav {
+        top: 68px;
+    }
+
+    .mekanisme-subnav__inner {
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 8px;
+        padding: 10px 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    .mekanisme-subnav__inner::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .mekanisme-subnav__link {
+        flex: 0 0 auto;
+        font-size: 0.88rem;
+        padding: 9px 13px;
+        white-space: nowrap;
+    }
+
+    .business-model-section,
+    .flow-section,
+    .terms-section,
+    .faq-section,
+    .mekanisme-cta-section {
+        padding: 56px 0;
+    }
+
+    .mekanisme-head {
+        margin-bottom: 26px;
+    }
+
+    .mekanisme-head__kicker {
+        font-size: 0.78rem;
+        margin-bottom: 8px;
+    }
+
+    .mekanisme-head__title {
+        font-size: 1.62rem;
+        margin-bottom: 10px;
+    }
+
+    .mekanisme-head__desc {
+        font-size: 0.93rem;
+        line-height: 1.64;
+    }
+
+    .model-card-grid,
+    .terms-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .model-card {
+        padding: 24px 18px;
+        border-radius: 18px;
+    }
+
+    .model-card__icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.16rem;
+    }
+
+    .model-card__title {
+        font-size: 1.1rem;
+    }
+
+    .model-card__text,
+    .model-card__list {
+        font-size: 0.9rem;
+    }
+
+    .role-split {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .flow-timeline {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .flow-timeline::before {
+        display: none;
+    }
+
+    .flow-step {
+        padding: 16px 14px;
+        transform: translateY(14px);
+    }
+
+    .flow-step__number {
+        width: 32px;
+        height: 32px;
+        font-size: 0.82rem;
+        margin-bottom: 8px;
+    }
+
+    .flow-step__title {
+        font-size: 0.98rem;
+    }
+
+    .flow-step__list {
+        font-size: 0.88rem;
+        line-height: 1.55;
+    }
+
+    .flow-note {
+        font-size: 0.9rem;
+        line-height: 1.64;
+        padding: 12px 13px;
+    }
+
+    .terms-card {
+        padding: 14px 12px;
+        gap: 8px;
+    }
+
+    .terms-card__icon {
+        font-size: 1rem;
+    }
+
+    .terms-card p {
+        font-size: 0.88rem;
+    }
+
+    .faq-accordion {
+        gap: 8px;
+    }
+
+    .faq-item {
+        border-radius: 12px;
+    }
+
+    .faq-question {
+        padding: 14px 14px;
+        font-size: 0.92rem;
+        gap: 10px;
+    }
+
+    .faq-answer p {
+        padding: 0 14px 14px;
+        font-size: 0.89rem;
+    }
+
+    .mekanisme-cta {
+        border-radius: 20px;
+        padding: 28px 20px;
+        text-align: center;
+    }
+
+    .mekanisme-cta__title {
+        font-size: 1.56rem;
+    }
+
+    .mekanisme-cta__desc {
+        margin-bottom: 18px;
+        font-size: 0.94rem;
+    }
+
+    .mekanisme-cta__actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .mekanisme-btn {
+        width: 100%;
+        text-align: center;
+        padding: 11px 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    .mekanisme-hero {
+        min-height: 54vh;
+    }
+
+    .mekanisme-hero__title {
+        font-size: 1.64rem;
+    }
+
+    .mekanisme-head__title {
+        font-size: 1.48rem;
+    }
+
+    .mekanisme-subnav__link {
+        padding: 8px 11px;
+        font-size: 0.85rem;
+    }
+
+    .mekanisme-cta {
+        padding: 24px 16px;
+    }
+}

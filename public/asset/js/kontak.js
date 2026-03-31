@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollButtons = document.querySelectorAll(".js-kontak-scroll");
     const form = document.getElementById("kontak-form");
     const successMessage = document.getElementById("kontak-success");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const getAnchorOffset = () => {
+        const headerHeight = header ? header.offsetHeight : 0;
+        return headerHeight + (window.innerWidth <= 767 ? 14 : 18);
+    };
 
     const updateHeaderState = () => {
         if (!header) {
@@ -17,22 +23,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        {
-            threshold: 0.2,
-            rootMargin: "0px 0px -40px 0px"
-        }
-    );
+    if (prefersReducedMotion) {
+        animatedItems.forEach((item) => item.classList.add("is-visible"));
+    } else {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: window.innerWidth <= 767 ? 0.12 : 0.2,
+                rootMargin: window.innerWidth <= 767 ? "0px 0px -20px 0px" : "0px 0px -40px 0px"
+            }
+        );
 
-    animatedItems.forEach((item) => observer.observe(item));
+        animatedItems.forEach((item) => observer.observe(item));
+    }
 
     scrollButtons.forEach((button) => {
         button.addEventListener("click", (event) => {
@@ -42,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const targetTop = target.getBoundingClientRect().top + window.pageYOffset - 120;
+            const targetTop = target.getBoundingClientRect().top + window.pageYOffset - getAnchorOffset();
             window.scrollTo({ top: targetTop, behavior: "smooth" });
         });
     });
@@ -141,6 +151,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (!valid) {
+                const firstErrorField = form.querySelector(".kontak-field.has-error input, .kontak-field.has-error select, .kontak-field.has-error textarea");
+
+                if (firstErrorField) {
+                    firstErrorField.focus({ preventScroll: true });
+                    firstErrorField.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+
                 return;
             }
 

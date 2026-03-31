@@ -554,3 +554,421 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+@media (max-width: 1279px) {
+    .gabung-page .container {
+        padding: 0 24px;
+    }
+
+    .gabung-hero {
+        padding: 112px 0 70px;
+    }
+
+    .gabung-hero__title {
+        font-size: 2.6rem;
+    }
+
+    .gabung-hero__image {
+        height: 390px;
+    }
+
+    .gabung-form-section,
+    .selection-section,
+    .sales-contact-section,
+    .gabung-cta {
+        padding: 76px 0;
+    }
+
+    .gabung-head__title {
+        font-size: 2rem;
+    }
+
+    .gabung-form-card {
+        padding: 24px;
+    }
+
+    .gabung-cta__inner {
+        padding: 44px;
+    }
+
+    .gabung-cta__title {
+        font-size: 1.96rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .gabung-page .container {
+        padding: 0 20px;
+    }
+
+    .gabung-head {
+        margin-bottom: 30px;
+    }
+
+    .gabung-head__title {
+        font-size: 1.84rem;
+    }
+
+    .gabung-head__desc {
+        font-size: 0.96rem;
+    }
+
+    .gabung-hero {
+        padding: 100px 0 60px;
+    }
+
+    .gabung-hero__layout {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .gabung-hero__content,
+    .gabung-hero__visual {
+        max-width: 100%;
+    }
+
+    .gabung-hero__title {
+        font-size: 2.24rem;
+    }
+
+    .gabung-hero__desc {
+        max-width: 100%;
+        font-size: 0.98rem;
+        line-height: 1.72;
+    }
+
+    .gabung-hero__actions {
+        flex-wrap: wrap;
+    }
+
+    .gabung-hero__labels {
+        flex-wrap: wrap;
+    }
+
+    .gabung-hero__image {
+        height: 340px;
+    }
+
+    .gabung-form-section,
+    .selection-section,
+    .sales-contact-section,
+    .gabung-cta {
+        padding: 66px 0;
+    }
+
+    .gabung-form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .gabung-field span {
+        font-size: 0.86rem;
+    }
+
+    .gabung-field input,
+    .gabung-field select,
+    .gabung-field textarea {
+        font-size: 0.91rem;
+        padding: 10px 12px;
+    }
+
+    .selection-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .selection-steps::before {
+        display: none;
+    }
+
+    .selection-step {
+        padding: 18px 14px;
+    }
+
+    .sales-contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .sales-contact-card {
+        padding: 20px 16px;
+    }
+
+    .gabung-cta__inner {
+        padding: 36px 30px;
+    }
+
+    .gabung-cta__title {
+        font-size: 1.78rem;
+    }
+
+    .gabung-cta__actions {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 767px) {
+    .gabung-page .container {
+        padding: 0 16px;
+    }
+
+    .gabung-hero {
+        padding: 88px 0 52px;
+    }
+
+    .gabung-hero__kicker {
+        font-size: 0.76rem;
+        margin-bottom: 10px;
+    }
+
+    .gabung-hero__title {
+        font-size: 1.82rem;
+        margin-bottom: 10px;
+    }
+
+    .gabung-hero__desc {
+        font-size: 0.93rem;
+        line-height: 1.64;
+        margin-bottom: 16px;
+    }
+
+    .gabung-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .gabung-hero__actions .gabung-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .gabung-hero__labels {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .gabung-hero__labels span {
+        font-size: 0.78rem;
+        padding: 7px 10px;
+    }
+
+    .gabung-hero__image {
+        height: 260px;
+    }
+
+    .gabung-form-section,
+    .selection-section,
+    .sales-contact-section,
+    .gabung-cta {
+        padding: 56px 0;
+    }
+
+    .gabung-head {
+        margin-bottom: 24px;
+    }
+
+    .gabung-head__kicker {
+        font-size: 0.78rem;
+        margin-bottom: 8px;
+    }
+
+    .gabung-head__title {
+        font-size: 1.56rem;
+        margin-bottom: 8px;
+    }
+
+    .gabung-head__desc {
+        font-size: 0.92rem;
+        line-height: 1.62;
+    }
+
+    .gabung-form-card {
+        border-radius: 18px;
+        padding: 18px 14px;
+    }
+
+    .gabung-form-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .gabung-field span {
+        font-size: 0.84rem;
+    }
+
+    .gabung-field input,
+    .gabung-field select,
+    .gabung-field textarea {
+        font-size: 0.9rem;
+        min-height: 44px;
+        padding: 10px 11px;
+    }
+
+    .gabung-field textarea {
+        min-height: 110px;
+    }
+
+    .gabung-checkbox {
+        gap: 8px;
+        margin-top: 6px;
+    }
+
+    .gabung-checkbox span {
+        font-size: 0.88rem;
+    }
+
+    .gabung-form-actions {
+        margin-top: 12px;
+    }
+
+    .gabung-form-actions .gabung-btn {
+        width: 100%;
+        text-align: center;
+        padding: 11px 16px;
+    }
+
+    .gabung-form-note {
+        font-size: 0.82rem;
+    }
+
+    .gabung-error {
+        font-size: 0.78rem;
+        min-height: 16px;
+    }
+
+    .gabung-success {
+        font-size: 0.86rem;
+    }
+
+    .selection-steps {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    .selection-step {
+        border-radius: 14px;
+        padding: 16px 13px;
+        transform: translateY(14px);
+    }
+
+    .selection-step__number {
+        width: 32px;
+        height: 32px;
+        font-size: 0.82rem;
+        margin-bottom: 8px;
+    }
+
+    .selection-step__title {
+        font-size: 0.96rem;
+    }
+
+    .selection-step__text {
+        font-size: 0.88rem;
+        line-height: 1.58;
+    }
+
+    .selection-note {
+        font-size: 0.89rem;
+        line-height: 1.62;
+        padding: 12px 13px;
+    }
+
+    .sales-contact-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .sales-contact-card {
+        border-radius: 14px;
+        padding: 18px 14px;
+    }
+
+    .sales-contact-card__icon {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+
+    .sales-contact-card__title {
+        font-size: 1rem;
+    }
+
+    .sales-contact-card__text,
+    .sales-contact-card__meta {
+        font-size: 0.89rem;
+    }
+
+    .sales-contact-card .gabung-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .sales-contact-info {
+        padding: 14px;
+    }
+
+    .sales-contact-info h3 {
+        font-size: 1rem;
+    }
+
+    .sales-contact-info li {
+        font-size: 0.89rem;
+    }
+
+    .gabung-cta__inner {
+        border-radius: 20px;
+        padding: 28px 20px;
+        text-align: center;
+    }
+
+    .gabung-cta__title {
+        font-size: 1.5rem;
+    }
+
+    .gabung-cta__desc {
+        font-size: 0.92rem;
+        line-height: 1.62;
+        margin-bottom: 16px;
+    }
+
+    .gabung-cta__actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .gabung-cta__actions .gabung-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .gabung-page .container {
+        padding: 0 14px;
+    }
+
+    .gabung-hero {
+        padding-top: 84px;
+    }
+
+    .gabung-hero__title {
+        font-size: 1.64rem;
+    }
+
+    .gabung-head__title {
+        font-size: 1.42rem;
+    }
+
+    .gabung-form-card,
+    .selection-step,
+    .sales-contact-card,
+    .sales-contact-info,
+    .gabung-cta__inner {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}

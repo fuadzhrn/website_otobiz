@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectionSteps = document.querySelectorAll(".selection-step");
     const form = document.getElementById("gabung-registration-form");
     const successMessage = document.getElementById("gabung-success-message");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const getAnchorOffset = () => {
+        const headerHeight = header ? header.offsetHeight : 0;
+        return headerHeight + (window.innerWidth <= 767 ? 14 : 18);
+    };
 
     const updateHeaderState = () => {
         if (!header) {
@@ -18,46 +24,58 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const fadeObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    fadeObserver.unobserve(entry.target);
-                }
-            });
-        },
-        {
-            threshold: 0.2,
-            rootMargin: "0px 0px -40px 0px"
-        }
-    );
-
-    animatedItems.forEach((item) => fadeObserver.observe(item));
-
-    const stepObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) {
-                    return;
-                }
-
-                selectionSteps.forEach((step, index) => {
-                    setTimeout(() => {
-                        step.classList.add("is-visible");
-                    }, index * 160);
+    if (prefersReducedMotion) {
+        animatedItems.forEach((item) => item.classList.add("is-visible"));
+    } else {
+        const fadeObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        fadeObserver.unobserve(entry.target);
+                    }
                 });
+            },
+            {
+                threshold: window.innerWidth <= 767 ? 0.12 : 0.2,
+                rootMargin: window.innerWidth <= 767 ? "0px 0px -20px 0px" : "0px 0px -40px 0px"
+            }
+        );
 
-                stepObserver.unobserve(entry.target);
-            });
-        },
-        {
-            threshold: 0.3
-        }
-    );
+        animatedItems.forEach((item) => fadeObserver.observe(item));
+    }
 
     if (selectionStepsContainer) {
-        stepObserver.observe(selectionStepsContainer);
+        if (prefersReducedMotion) {
+            selectionSteps.forEach((step) => {
+                step.classList.add("is-visible");
+            });
+        } else {
+            const stepObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        const stepDelay = window.innerWidth <= 767 ? 120 : 160;
+
+                        selectionSteps.forEach((step, index) => {
+                            setTimeout(() => {
+                                step.classList.add("is-visible");
+                            }, index * stepDelay);
+                        });
+
+                        stepObserver.unobserve(entry.target);
+                    });
+                },
+                {
+                    threshold: window.innerWidth <= 767 ? 0.16 : 0.3
+                }
+            );
+
+            stepObserver.observe(selectionStepsContainer);
+        }
     }
 
     const scrollTargets = document.querySelectorAll(".js-scroll-to-form");
@@ -69,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const headerOffset = 120;
+            const headerOffset = getAnchorOffset();
             const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
             window.scrollTo({ top: targetTop, behavior: "smooth" });
         });
@@ -170,6 +188,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (!isFormValid) {
+                const firstErrorField = form.querySelector(".gabung-field.has-error input, .gabung-field.has-error select, .gabung-field.has-error textarea");
+
+                if (firstErrorField) {
+                    firstErrorField.focus({ preventScroll: true });
+                    firstErrorField.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+                }
+
                 return;
             }
 

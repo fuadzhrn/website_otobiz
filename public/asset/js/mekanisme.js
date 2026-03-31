@@ -1,10 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".site-header");
     const subnav = document.querySelector("#mekanisme-subnav");
+    const subnavInner = document.querySelector(".mekanisme-subnav__inner");
     const subnavLinks = document.querySelectorAll(".mekanisme-subnav__link");
     const animatedItems = document.querySelectorAll(".fade-up");
     const faqItems = document.querySelectorAll(".faq-item");
     const timeline = document.querySelector("#flow-timeline");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const getAnchorOffset = () => {
+        const headerHeight = header ? header.offsetHeight : 0;
+        const subnavHeight = subnav ? subnav.offsetHeight : 0;
+        const gap = window.innerWidth <= 767 ? 14 : 18;
+
+        return headerHeight + subnavHeight + gap;
+    };
 
     const updateHeaderState = () => {
         if (!header) {
@@ -18,47 +28,60 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const fadeObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    fadeObserver.unobserve(entry.target);
-                }
-            });
-        },
-        {
-            threshold: 0.18,
-            rootMargin: "0px 0px -40px 0px"
-        }
-    );
-
-    animatedItems.forEach((item) => fadeObserver.observe(item));
-
-    const timelineObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) {
-                    return;
-                }
-
-                const steps = entry.target.querySelectorAll(".flow-step");
-                steps.forEach((step, index) => {
-                    setTimeout(() => {
-                        step.classList.add("is-visible");
-                    }, index * 180);
+    if (prefersReducedMotion) {
+        animatedItems.forEach((item) => item.classList.add("is-visible"));
+    } else {
+        const fadeObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("is-visible");
+                        fadeObserver.unobserve(entry.target);
+                    }
                 });
+            },
+            {
+                threshold: window.innerWidth <= 767 ? 0.1 : 0.18,
+                rootMargin: window.innerWidth <= 767 ? "0px 0px -20px 0px" : "0px 0px -40px 0px"
+            }
+        );
 
-                timelineObserver.unobserve(entry.target);
-            });
-        },
-        {
-            threshold: 0.28
-        }
-    );
+        animatedItems.forEach((item) => fadeObserver.observe(item));
+    }
 
     if (timeline) {
-        timelineObserver.observe(timeline);
+        if (prefersReducedMotion) {
+            timeline.querySelectorAll(".flow-step").forEach((step) => {
+                step.classList.add("is-visible");
+            });
+        } else {
+            const timelineObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+                        const steps = entry.target.querySelectorAll(".flow-step");
+                        const isMobile = window.innerWidth <= 767;
+                        const stepDelay = isMobile ? 120 : 180;
+
+                        steps.forEach((step, index) => {
+                            setTimeout(() => {
+                                step.classList.add("is-visible");
+                            }, index * stepDelay);
+                        });
+
+                        timelineObserver.unobserve(entry.target);
+                    });
+                },
+                {
+                    threshold: window.innerWidth <= 767 ? 0.14 : 0.28
+                }
+            );
+
+            timelineObserver.observe(timeline);
+        }
     }
 
     const sectionIds = ["model-bisnis", "alur-kemitraan", "syarat-ketentuan", "faq-kemitraan"];
@@ -70,14 +93,23 @@ document.addEventListener("DOMContentLoaded", () => {
         let current = sectionIds[0];
 
         sections.forEach((section) => {
-            if (window.scrollY >= section.offsetTop - 180) {
+            if (window.scrollY >= section.offsetTop - getAnchorOffset()) {
                 current = section.id;
             }
         });
 
         subnavLinks.forEach((link) => {
             const target = (link.getAttribute("href") || "").replace("#", "");
-            link.classList.toggle("is-active", target === current);
+            const isActive = target === current;
+            link.classList.toggle("is-active", isActive);
+
+            if (isActive && subnavInner && window.innerWidth <= 767) {
+                link.scrollIntoView({
+                    behavior: "smooth",
+                    inline: "center",
+                    block: "nearest"
+                });
+            }
         });
 
         if (subnav) {
@@ -95,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            const headerOffset = 140;
+            const headerOffset = getAnchorOffset();
             const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
 
             window.scrollTo({

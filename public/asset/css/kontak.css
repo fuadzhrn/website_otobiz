@@ -501,3 +501,393 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+@media (max-width: 1279px) {
+    .kontak-page .container {
+        padding: 0 24px;
+    }
+
+    .kontak-hero {
+        padding: 110px 0 50px;
+    }
+
+    .kontak-hero__title {
+        font-size: 2.45rem;
+    }
+
+    .contact-hub-section {
+        padding: 52px 0 72px;
+    }
+
+    .contact-hub-grid {
+        gap: 16px;
+    }
+
+    .kontak-form-card {
+        padding: 22px;
+    }
+
+    .closing-strip {
+        padding-bottom: 68px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .kontak-page .container {
+        padding: 0 20px;
+    }
+
+    .kontak-hero {
+        padding: 96px 0 46px;
+    }
+
+    .kontak-hero__layout {
+        grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+        gap: 16px;
+    }
+
+    .kontak-hero__title {
+        font-size: 2.08rem;
+        max-width: 100%;
+    }
+
+    .kontak-hero__desc {
+        font-size: 0.95rem;
+        line-height: 1.66;
+        max-width: 100%;
+    }
+
+    .kontak-hero__quick {
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .kontak-quick-card {
+        padding: 12px;
+    }
+
+    .kontak-quick-card h3 {
+        font-size: 0.95rem;
+    }
+
+    .kontak-quick-card p {
+        font-size: 0.84rem;
+    }
+
+    .contact-hub-section {
+        padding: 46px 0 64px;
+    }
+
+    .contact-hub-grid {
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr);
+        gap: 14px;
+    }
+
+    .kontak-form-card__title {
+        font-size: 1.7rem;
+    }
+
+    .kontak-form-card__desc {
+        font-size: 0.95rem;
+    }
+
+    .kontak-form-grid {
+        gap: 10px;
+    }
+
+    .kontak-field span {
+        font-size: 0.86rem;
+    }
+
+    .kontak-field input,
+    .kontak-field select,
+    .kontak-field textarea {
+        padding: 10px 11px;
+        font-size: 0.9rem;
+    }
+
+    .lokasi-card,
+    .support-card-wrap {
+        padding: 16px;
+    }
+
+    .lokasi-card__actions {
+        flex-wrap: wrap;
+    }
+
+    .lokasi-card__actions .kontak-btn {
+        flex: 1 1 calc(50% - 4px);
+        text-align: center;
+    }
+
+    .support-card {
+        grid-template-columns: auto 1fr;
+        row-gap: 8px;
+    }
+
+    .support-card__link {
+        grid-column: 1 / -1;
+    }
+
+    .closing-strip {
+        padding-bottom: 58px;
+    }
+
+    .closing-strip__inner {
+        padding: 14px 16px;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    .kontak-page .container {
+        padding: 0 16px;
+    }
+
+    .kontak-hero {
+        padding: 86px 0 42px;
+    }
+
+    .kontak-hero__layout {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .kontak-hero__kicker {
+        font-size: 0.76rem;
+        margin-bottom: 8px;
+    }
+
+    .kontak-hero__title {
+        font-size: 1.78rem;
+        margin-bottom: 8px;
+    }
+
+    .kontak-hero__desc {
+        font-size: 0.92rem;
+        line-height: 1.62;
+        margin-bottom: 12px;
+    }
+
+    .kontak-hero__content .kontak-btn {
+        width: 100%;
+        text-align: center;
+        padding: 11px 16px;
+    }
+
+    .kontak-hero__quick {
+        margin-top: 0;
+        gap: 8px;
+    }
+
+    .kontak-quick-card {
+        border-radius: 12px;
+        padding: 11px;
+    }
+
+    .kontak-quick-card i {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+
+    .kontak-quick-card h3 {
+        font-size: 0.92rem;
+        margin-bottom: 4px;
+    }
+
+    .kontak-quick-card p {
+        font-size: 0.83rem;
+        line-height: 1.52;
+    }
+
+    .contact-hub-section {
+        padding: 40px 0 56px;
+    }
+
+    .contact-hub-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .kontak-form-card {
+        border-radius: 16px;
+        padding: 16px 14px;
+    }
+
+    .kontak-form-card__kicker {
+        font-size: 0.78rem;
+        margin-bottom: 6px;
+    }
+
+    .kontak-form-card__title {
+        font-size: 1.48rem;
+        margin-bottom: 6px;
+    }
+
+    .kontak-form-card__desc {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+
+    .kontak-form-grid {
+        grid-template-columns: 1fr;
+        gap: 9px;
+        margin-bottom: 10px;
+    }
+
+    .kontak-field span {
+        font-size: 0.84rem;
+        margin-bottom: 5px;
+    }
+
+    .kontak-field input,
+    .kontak-field select,
+    .kontak-field textarea {
+        min-height: 44px;
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    .kontak-field textarea {
+        min-height: 120px;
+    }
+
+    .kontak-checkbox {
+        gap: 8px;
+    }
+
+    .kontak-checkbox span {
+        font-size: 0.87rem;
+    }
+
+    #kontak-form .kontak-btn--primary {
+        width: 100%;
+        text-align: center;
+        padding: 11px 16px;
+    }
+
+    .kontak-error {
+        min-height: 16px;
+        font-size: 0.77rem;
+    }
+
+    .kontak-success {
+        font-size: 0.86rem;
+    }
+
+    .contact-hub-side {
+        gap: 10px;
+    }
+
+    .lokasi-card,
+    .support-card-wrap {
+        border-radius: 14px;
+        padding: 14px;
+    }
+
+    .lokasi-card__title,
+    .support-card-wrap__title {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+    }
+
+    .lokasi-block {
+        padding: 10px;
+        margin-bottom: 8px;
+    }
+
+    .lokasi-block p {
+        font-size: 0.85rem;
+    }
+
+    .lokasi-map-placeholder {
+        height: 76px;
+        font-size: 0.84rem;
+    }
+
+    .lokasi-card__actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .lokasi-card__actions .kontak-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .support-card-wrap__desc {
+        font-size: 0.88rem;
+        margin-bottom: 8px;
+    }
+
+    .support-card {
+        padding: 9px;
+        gap: 8px;
+        grid-template-columns: auto 1fr;
+    }
+
+    .support-card i {
+        font-size: 0.95rem;
+    }
+
+    .support-card h4 {
+        font-size: 0.87rem;
+    }
+
+    .support-card p {
+        font-size: 0.8rem;
+    }
+
+    .support-card__link {
+        display: inline-block;
+        grid-column: 1 / -1;
+        font-size: 0.8rem;
+        padding-top: 2px;
+    }
+
+    .support-info-box p {
+        font-size: 0.82rem;
+    }
+
+    .closing-strip {
+        padding-bottom: 48px;
+    }
+
+    .closing-strip__inner {
+        padding: 14px;
+        border-radius: 14px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .closing-strip__inner p {
+        font-size: 0.89rem;
+    }
+
+    .closing-strip__cta {
+        min-width: 0;
+        width: 100%;
+        padding: 11px 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .kontak-page .container {
+        padding: 0 14px;
+    }
+
+    .kontak-hero__title {
+        font-size: 1.64rem;
+    }
+
+    .kontak-form-card,
+    .lokasi-card,
+    .support-card-wrap,
+    .closing-strip__inner {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
