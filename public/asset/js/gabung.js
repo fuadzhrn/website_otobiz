@@ -1,0 +1,185 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector(".site-header");
+    const animatedItems = document.querySelectorAll(".fade-up");
+    const selectionStepsContainer = document.querySelector("#selection-steps");
+    const selectionSteps = document.querySelectorAll(".selection-step");
+    const form = document.getElementById("gabung-registration-form");
+    const successMessage = document.getElementById("gabung-success-message");
+
+    const updateHeaderState = () => {
+        if (!header) {
+            return;
+        }
+
+        if (window.scrollY > 20) {
+            header.classList.add("is-scrolled");
+        } else {
+            header.classList.remove("is-scrolled");
+        }
+    };
+
+    const fadeObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.2,
+            rootMargin: "0px 0px -40px 0px"
+        }
+    );
+
+    animatedItems.forEach((item) => fadeObserver.observe(item));
+
+    const stepObserver = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                selectionSteps.forEach((step, index) => {
+                    setTimeout(() => {
+                        step.classList.add("is-visible");
+                    }, index * 160);
+                });
+
+                stepObserver.unobserve(entry.target);
+            });
+        },
+        {
+            threshold: 0.3
+        }
+    );
+
+    if (selectionStepsContainer) {
+        stepObserver.observe(selectionStepsContainer);
+    }
+
+    const scrollTargets = document.querySelectorAll(".js-scroll-to-form");
+    scrollTargets.forEach((button) => {
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
+            const target = document.querySelector("#gabung-form");
+            if (!target) {
+                return;
+            }
+
+            const headerOffset = 120;
+            const targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: targetTop, behavior: "smooth" });
+        });
+    });
+
+    const isValidEmail = (value) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    };
+
+    const isValidWhatsapp = (value) => {
+        const normalized = value.replace(/\s|-/g, "");
+        return /^\+?\d{9,15}$/.test(normalized);
+    };
+
+    const setFieldError = (field, message) => {
+        const wrapper = field.closest(".gabung-field");
+        if (!wrapper) {
+            return;
+        }
+
+        wrapper.classList.add("has-error");
+        const errorEl = wrapper.querySelector(".gabung-error");
+        if (errorEl) {
+            errorEl.textContent = message;
+        }
+    };
+
+    const clearFieldError = (field) => {
+        const wrapper = field.closest(".gabung-field");
+        if (!wrapper) {
+            return;
+        }
+
+        wrapper.classList.remove("has-error");
+        const errorEl = wrapper.querySelector(".gabung-error");
+        if (errorEl) {
+            errorEl.textContent = "";
+        }
+    };
+
+    if (form) {
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (successMessage) {
+                successMessage.textContent = "";
+            }
+
+            const requiredFields = [
+                "nama-lengkap",
+                "nomor-whatsapp",
+                "email",
+                "kota",
+                "pekerjaan",
+                "minat-program",
+                "budget-awal"
+            ];
+
+            let isFormValid = true;
+
+            requiredFields.forEach((id) => {
+                const field = document.getElementById(id);
+                if (!field) {
+                    return;
+                }
+
+                clearFieldError(field);
+
+                if (!field.value.trim()) {
+                    setFieldError(field, "Field ini wajib diisi.");
+                    isFormValid = false;
+                }
+            });
+
+            const emailField = document.getElementById("email");
+            if (emailField && emailField.value.trim() && !isValidEmail(emailField.value.trim())) {
+                setFieldError(emailField, "Format email belum valid.");
+                isFormValid = false;
+            }
+
+            const phoneField = document.getElementById("nomor-whatsapp");
+            if (phoneField && phoneField.value.trim() && !isValidWhatsapp(phoneField.value.trim())) {
+                setFieldError(phoneField, "Nomor WhatsApp tidak valid.");
+                isFormValid = false;
+            }
+
+            const checkbox = document.getElementById("persetujuan");
+            const checkboxError = document.querySelector(".gabung-error--checkbox");
+            if (checkboxError) {
+                checkboxError.textContent = "";
+            }
+
+            if (!checkbox || !checkbox.checked) {
+                if (checkboxError) {
+                    checkboxError.textContent = "Anda perlu menyetujui pernyataan untuk melanjutkan.";
+                }
+                isFormValid = false;
+            }
+
+            if (!isFormValid) {
+                return;
+            }
+
+            form.reset();
+            if (successMessage) {
+                successMessage.textContent = "Pendaftaran berhasil dikirim. Tim OTOBIZ akan segera menghubungi Anda untuk konsultasi awal.";
+            }
+        });
+    }
+
+    updateHeaderState();
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+});

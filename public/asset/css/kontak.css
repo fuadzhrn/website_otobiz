@@ -1,0 +1,503 @@
+:root {
+    --kontak-green: #719e32;
+    --kontak-orange: #f09810;
+    --kontak-cream: #f8f6f0;
+    --kontak-dark: #44444a;
+    --kontak-muted: #6a6a72;
+    --kontak-white: #ffffff;
+    --kontak-radius-md: 14px;
+    --kontak-radius-lg: 22px;
+    --kontak-shadow-soft: 0 10px 24px rgba(39, 42, 48, 0.08);
+    --kontak-shadow-card: 0 14px 32px rgba(39, 42, 48, 0.1);
+}
+
+.kontak-page .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.kontak-btn {
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    padding: 11px 20px;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.kontak-btn:hover {
+    transform: translateY(-2px);
+}
+
+.kontak-btn--primary {
+    background: var(--kontak-green);
+    color: #ffffff;
+    box-shadow: 0 8px 16px rgba(113, 158, 50, 0.3);
+}
+
+.kontak-btn--primary:hover {
+    background: #648b2c;
+}
+
+.kontak-btn--ghost {
+    background: transparent;
+    color: var(--kontak-dark);
+    border-color: rgba(68, 68, 74, 0.18);
+}
+
+.kontak-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 118px 0 54px;
+    background: linear-gradient(135deg, #719e32 0%, #5f8628 58%, #4f6f22 100%);
+}
+
+.kontak-hero::before,
+.kontak-hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+.kontak-hero::before {
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+    top: -190px;
+    left: -120px;
+}
+
+.kontak-hero::after {
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(240, 152, 16, 0.28), rgba(240, 152, 16, 0));
+    bottom: -160px;
+    right: 80px;
+}
+
+.kontak-hero__layout {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.kontak-hero__kicker {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 10px;
+}
+
+.kontak-hero__title {
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+    font-size: 2.75rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    max-width: 690px;
+}
+
+.kontak-hero__desc {
+    font-family: "Poppins", sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.72;
+    margin-bottom: 18px;
+    max-width: 700px;
+}
+
+.kontak-hero .kontak-btn--primary {
+    background: #ffffff;
+    color: #4f6f22;
+    box-shadow: 0 10px 20px rgba(42, 56, 20, 0.25);
+}
+
+.kontak-hero .kontak-btn--primary:hover {
+    background: #f2f5e9;
+}
+
+.kontak-hero__quick {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.kontak-quick-card {
+    background: #ffffff;
+    border: 1px solid rgba(68, 68, 74, 0.1);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--kontak-shadow-soft);
+}
+
+.kontak-quick-card i {
+    color: var(--kontak-green);
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+}
+
+.kontak-quick-card h3 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    color: var(--kontak-dark);
+    margin: 0 0 6px;
+}
+
+.kontak-quick-card p {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.88rem;
+    color: #666970;
+    line-height: 1.58;
+}
+
+.contact-hub-section {
+    padding: 58px 0 78px;
+    background: #ffffff;
+}
+
+.contact-hub-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 18px;
+    align-items: start;
+}
+
+.kontak-form-card {
+    background: #ffffff;
+    border: 1px solid rgba(68, 68, 74, 0.11);
+    border-radius: 18px;
+    box-shadow: var(--kontak-shadow-card);
+    padding: 26px;
+}
+
+.kontak-form-card__kicker {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.82rem;
+    color: var(--kontak-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+}
+
+.kontak-form-card__title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.9rem;
+    color: var(--kontak-dark);
+    margin-bottom: 8px;
+}
+
+.kontak-form-card__desc {
+    font-family: "Poppins", sans-serif;
+    color: #5f626b;
+    line-height: 1.68;
+    margin-bottom: 18px;
+    max-width: 740px;
+}
+
+.kontak-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.kontak-field {
+    display: block;
+}
+
+.kontak-field--full {
+    grid-column: 1 / -1;
+}
+
+.kontak-field span {
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.88rem;
+    color: #62656d;
+    margin-bottom: 6px;
+}
+
+.kontak-field em {
+    font-style: normal;
+    color: var(--kontak-orange);
+}
+
+.kontak-field input,
+.kontak-field select,
+.kontak-field textarea {
+    width: 100%;
+    border: 1px solid rgba(68, 68, 74, 0.2);
+    border-radius: 10px;
+    padding: 11px 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.92rem;
+    color: #3f4248;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kontak-field textarea {
+    min-height: 132px;
+    resize: vertical;
+}
+
+.kontak-field input:focus,
+.kontak-field select:focus,
+.kontak-field textarea:focus {
+    border-color: rgba(113, 158, 50, 0.82);
+    box-shadow: 0 0 0 3px rgba(113, 158, 50, 0.12);
+}
+
+.kontak-checkbox {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.kontak-checkbox input {
+    margin-top: 3px;
+}
+
+.kontak-checkbox span {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    color: #60636b;
+    line-height: 1.58;
+}
+
+.kontak-error {
+    display: block;
+    min-height: 18px;
+    margin-top: 4px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.8rem;
+    color: #ca5252;
+}
+
+.kontak-field.has-error input,
+.kontak-field.has-error select,
+.kontak-field.has-error textarea {
+    border-color: #d85757;
+    box-shadow: 0 0 0 2px rgba(216, 87, 87, 0.12);
+}
+
+.kontak-success {
+    min-height: 22px;
+    margin-top: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    color: #3f6a21;
+    font-weight: 500;
+}
+
+.contact-hub-side {
+    display: grid;
+    gap: 14px;
+}
+
+.lokasi-card,
+.support-card-wrap {
+    background: #ffffff;
+    border: 1px solid rgba(68, 68, 74, 0.1);
+    border-radius: 16px;
+    box-shadow: var(--kontak-shadow-soft);
+    padding: 18px;
+}
+
+.lokasi-card__title,
+.support-card-wrap__title {
+    font-family: "Montserrat", sans-serif;
+    color: var(--kontak-dark);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.lokasi-block {
+    background: var(--kontak-cream);
+    border: 1px solid rgba(68, 68, 74, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.lokasi-block__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.82rem;
+    color: #4e5f33;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.lokasi-block p {
+    margin: 0 0 6px;
+    font-family: "Poppins", sans-serif;
+    color: #585b64;
+    line-height: 1.6;
+    font-size: 0.88rem;
+}
+
+.lokasi-map-placeholder {
+    margin: 10px 0;
+    height: 88px;
+    border: 1px dashed rgba(113, 158, 50, 0.44);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #5b7534;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.88rem;
+    background: rgba(113, 158, 50, 0.06);
+}
+
+.lokasi-card__actions {
+    display: flex;
+    gap: 8px;
+}
+
+.support-card-wrap__desc {
+    font-family: "Poppins", sans-serif;
+    color: #62656d;
+    line-height: 1.62;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.support-card-list {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.support-card {
+    background: var(--kontak-cream);
+    border: 1px solid rgba(68, 68, 74, 0.08);
+    border-radius: 12px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.support-card i {
+    color: var(--kontak-green);
+    font-size: 1rem;
+}
+
+.support-card h4 {
+    margin: 0 0 2px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    color: var(--kontak-dark);
+}
+
+.support-card p {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.84rem;
+    color: #62656c;
+}
+
+.support-card__link {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.82rem;
+    color: #3f6320;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.support-info-box {
+    background: rgba(240, 152, 16, 0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(240, 152, 16, 0.22);
+    padding: 10px;
+}
+
+.support-info-box p {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.58;
+    color: #69511f;
+}
+
+.closing-strip {
+    padding: 0 0 74px;
+    background: #ffffff;
+}
+
+.closing-strip__inner {
+    background: linear-gradient(135deg, rgba(113, 158, 50, 0.12), rgba(248, 246, 240, 0.95));
+    border: 1px solid rgba(68, 68, 74, 0.08);
+    border-radius: 16px;
+    padding: 16px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+}
+
+.closing-strip__inner p {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.94rem;
+    line-height: 1.66;
+    color: #545761;
+    flex: 1;
+}
+
+.closing-strip__cta {
+    white-space: nowrap;
+    min-width: 184px;
+    text-align: center;
+    padding: 12px 22px;
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.fade-up.delay-1 {
+    transition-delay: 0.12s;
+}
+
+.fade-up.delay-2 {
+    transition-delay: 0.22s;
+}
+
+.fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}

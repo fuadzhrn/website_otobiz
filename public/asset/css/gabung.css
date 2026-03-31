@@ -1,0 +1,556 @@
+:root {
+    --gabung-green: #719e32;
+    --gabung-orange: #f09810;
+    --gabung-cream: #f8f6f0;
+    --gabung-dark: #44444a;
+    --gabung-muted: #6a6a72;
+    --gabung-white: #ffffff;
+    --gabung-radius-md: 14px;
+    --gabung-radius-lg: 22px;
+    --gabung-shadow-soft: 0 10px 26px rgba(36, 39, 45, 0.08);
+    --gabung-shadow-card: 0 14px 34px rgba(36, 39, 45, 0.1);
+}
+
+.gabung-page .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gabung-head {
+    max-width: 760px;
+    text-align: center;
+    margin: 0 auto 36px;
+}
+
+.gabung-head__kicker {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gabung-orange);
+    margin-bottom: 10px;
+}
+
+.gabung-head__title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    color: var(--gabung-dark);
+    margin-bottom: 12px;
+}
+
+.gabung-head__desc {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--gabung-muted);
+}
+
+.gabung-btn {
+    border-radius: 999px;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.93rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    padding: 12px 22px;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.gabung-btn:hover {
+    transform: translateY(-2px);
+}
+
+.gabung-btn--primary {
+    background: var(--gabung-green);
+    color: #ffffff;
+    box-shadow: 0 10px 18px rgba(113, 158, 50, 0.3);
+}
+
+.gabung-btn--primary:hover {
+    background: #648b2c;
+}
+
+.gabung-btn--ghost {
+    background: transparent;
+    color: var(--gabung-green);
+    border-color: rgba(113, 158, 50, 0.35);
+}
+
+.gabung-btn--ghost-dark {
+    background: transparent;
+    color: var(--gabung-dark);
+    border-color: rgba(68, 68, 74, 0.2);
+}
+
+.gabung-btn--light {
+    background: #ffffff;
+    color: #2f3136;
+}
+
+.gabung-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 122px 0 78px;
+    background: linear-gradient(135deg, #719e32 0%, #5f8628 58%, #4f6f22 100%);
+}
+
+.gabung-hero::before,
+.gabung-hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+.gabung-hero::before {
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+    top: -190px;
+    left: -120px;
+}
+
+.gabung-hero::after {
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(240, 152, 16, 0.28), rgba(240, 152, 16, 0));
+    bottom: -160px;
+    right: 80px;
+}
+
+.gabung-hero__layout {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+    align-items: center;
+}
+
+.gabung-hero__kicker {
+    font-family: "Poppins", sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+}
+
+.gabung-hero__title {
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+    font-size: 3rem;
+    line-height: 1.18;
+    margin-bottom: 14px;
+}
+
+.gabung-hero__desc {
+    font-family: "Poppins", sans-serif;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.75;
+    margin-bottom: 22px;
+    max-width: 620px;
+}
+
+.gabung-hero__actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.gabung-hero__labels {
+    display: inline-flex;
+    gap: 8px;
+}
+
+.gabung-hero__labels span {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.82rem;
+    border-radius: 999px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.gabung-hero .gabung-btn--primary {
+    background: #ffffff;
+    color: #4f6f22;
+    box-shadow: 0 10px 20px rgba(42, 56, 20, 0.25);
+}
+
+.gabung-hero .gabung-btn--primary:hover {
+    background: #f2f5e9;
+}
+
+.gabung-hero .gabung-btn--ghost {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.42);
+}
+
+.gabung-hero__image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: var(--gabung-radius-lg);
+    box-shadow: var(--gabung-shadow-card);
+}
+
+.gabung-form-section,
+.selection-section,
+.sales-contact-section,
+.gabung-cta {
+    padding: 86px 0;
+}
+
+.gabung-form-section {
+    background: #ffffff;
+}
+
+.gabung-form-card {
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(68, 68, 74, 0.1);
+    box-shadow: var(--gabung-shadow-soft);
+    padding: 28px;
+}
+
+.gabung-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.gabung-field {
+    display: block;
+}
+
+.gabung-field--full {
+    grid-column: 1 / -1;
+}
+
+.gabung-field span {
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.88rem;
+    color: #60636c;
+    margin-bottom: 6px;
+}
+
+.gabung-field em {
+    color: var(--gabung-orange);
+    font-style: normal;
+}
+
+.gabung-field input,
+.gabung-field select,
+.gabung-field textarea {
+    width: 100%;
+    border: 1px solid rgba(68, 68, 74, 0.18);
+    border-radius: 10px;
+    padding: 11px 12px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.92rem;
+    color: #3f4249;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gabung-field textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.gabung-field input:focus,
+.gabung-field select:focus,
+.gabung-field textarea:focus {
+    border-color: rgba(113, 158, 50, 0.8);
+    box-shadow: 0 0 0 3px rgba(113, 158, 50, 0.12);
+}
+
+.gabung-checkbox {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 8px;
+}
+
+.gabung-checkbox input {
+    margin-top: 3px;
+}
+
+.gabung-checkbox span {
+    font-family: "Poppins", sans-serif;
+    color: #5f626a;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.gabung-form-actions {
+    margin-top: 16px;
+}
+
+.gabung-form-note {
+    margin-top: 10px;
+    font-family: "Poppins", sans-serif;
+    color: #747881;
+    font-size: 0.84rem;
+}
+
+.gabung-error {
+    display: block;
+    margin-top: 4px;
+    color: #c94c4c;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.8rem;
+    min-height: 18px;
+}
+
+.gabung-success {
+    margin-top: 10px;
+    color: #3f6a21;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    min-height: 22px;
+}
+
+.gabung-field.has-error input,
+.gabung-field.has-error select,
+.gabung-field.has-error textarea {
+    border-color: #d85757;
+    box-shadow: 0 0 0 2px rgba(216, 87, 87, 0.12);
+}
+
+.selection-section {
+    background: var(--gabung-cream);
+}
+
+.selection-steps {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.selection-steps::before {
+    content: "";
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    top: 26px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(113, 158, 50, 0.5), rgba(240, 152, 16, 0.55));
+}
+
+.selection-step {
+    position: relative;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid rgba(68, 68, 74, 0.1);
+    box-shadow: var(--gabung-shadow-soft);
+    padding: 20px 16px;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.selection-step.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.selection-step__number {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gabung-green);
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.86rem;
+    margin-bottom: 10px;
+}
+
+.selection-step__title {
+    font-family: "Montserrat", sans-serif;
+    color: var(--gabung-dark);
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.selection-step__text {
+    font-family: "Poppins", sans-serif;
+    color: #595c65;
+    font-size: 0.9rem;
+    line-height: 1.62;
+}
+
+.selection-note {
+    font-family: "Poppins", sans-serif;
+    background: #ffffff;
+    border: 1px dashed rgba(113, 158, 50, 0.5);
+    border-radius: 14px;
+    padding: 14px 16px;
+    color: #565964;
+    line-height: 1.68;
+}
+
+.sales-contact-section {
+    background: #ffffff;
+}
+
+.sales-contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.sales-contact-card {
+    background: #ffffff;
+    border: 1px solid rgba(68, 68, 74, 0.1);
+    border-radius: 16px;
+    box-shadow: var(--gabung-shadow-soft);
+    padding: 22px 18px;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.sales-contact-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--gabung-shadow-card);
+}
+
+.sales-contact-card__icon {
+    font-size: 1.3rem;
+    color: var(--gabung-green);
+    margin-bottom: 12px;
+}
+
+.sales-contact-card__title {
+    font-family: "Montserrat", sans-serif;
+    color: var(--gabung-dark);
+    font-size: 1.08rem;
+    margin-bottom: 8px;
+}
+
+.sales-contact-card__text,
+.sales-contact-card__meta {
+    font-family: "Poppins", sans-serif;
+    color: #5e616a;
+    line-height: 1.62;
+}
+
+.sales-contact-card__text {
+    margin-bottom: 8px;
+}
+
+.sales-contact-card__meta {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
+.sales-contact-info {
+    background: var(--gabung-cream);
+    border: 1px solid rgba(68, 68, 74, 0.08);
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.sales-contact-info h3 {
+    font-family: "Montserrat", sans-serif;
+    color: var(--gabung-dark);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.sales-contact-info ul {
+    margin: 0;
+    padding-left: 16px;
+}
+
+.sales-contact-info li {
+    font-family: "Poppins", sans-serif;
+    color: #565964;
+    line-height: 1.68;
+    margin-bottom: 5px;
+}
+
+.gabung-cta {
+    background: #ffffff;
+}
+
+.gabung-cta__inner {
+    border-radius: 22px;
+    padding: 50px;
+    background: linear-gradient(135deg, #2f3136 0%, #44444a 54%, #719e32 100%);
+    box-shadow: var(--gabung-shadow-card);
+    position: relative;
+    overflow: hidden;
+}
+
+.gabung-cta__inner::before {
+    content: "";
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240, 152, 16, 0.32), rgba(240, 152, 16, 0));
+    right: -130px;
+    top: -120px;
+}
+
+.gabung-cta__title,
+.gabung-cta__desc,
+.gabung-cta__actions {
+    position: relative;
+    z-index: 2;
+}
+
+.gabung-cta__title {
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+    font-size: 2.15rem;
+    margin-bottom: 10px;
+}
+
+.gabung-cta__desc {
+    font-family: "Poppins", sans-serif;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.72;
+    max-width: 760px;
+    margin-bottom: 20px;
+}
+
+.gabung-cta__actions {
+    display: flex;
+    gap: 10px;
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.fade-up.delay-1 {
+    transition-delay: 0.12s;
+}
+
+.fade-up.delay-2 {
+    transition-delay: 0.22s;
+}
+
+.fade-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -9,10 +9,10 @@
             <a href="{{ route('tentang') }}" class="main-nav__link {{ request()->routeIs('tentang') ? 'is-active' : '' }}">Tentang Kami</a>
             <a href="{{ route('mekanisme') }}" class="main-nav__link {{ request()->routeIs('mekanisme') ? 'is-active' : '' }}">Mekanisme Kemitraan</a>
             <a href="{{ route('produk') }}" class="main-nav__link {{ request()->routeIs('produk') ? 'is-active' : '' }}">Produk</a>
-            <a href="#gabung" class="main-nav__link">Gabung Mitra</a>
-            <a href="#kontak" class="main-nav__link">Kontak &amp; Support</a>
+            <a href="{{ route('gabung') }}" class="main-nav__link {{ request()->routeIs('gabung') ? 'is-active' : '' }}">Gabung Mitra</a>
+            <a href="{{ route('kontak') }}" class="main-nav__link {{ request()->routeIs('kontak') ? 'is-active' : '' }}">Kontak &amp; Support</a>
         </nav>
 
-        <a href="#gabung" class="btn btn--sm btn--primary">Konsultasi</a>
+        <a href="{{ route('gabung') }}#gabung-form" class="btn btn--sm btn--primary">Konsultasi</a>
     </div>
 </header>

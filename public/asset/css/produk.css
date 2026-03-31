@@ -98,11 +98,40 @@
 }
 
 .produk-hero {
+    position: relative;
+    overflow: hidden;
     padding: 120px 0 72px;
-    background: linear-gradient(180deg, rgba(113, 158, 50, 0.09) 0%, rgba(248, 246, 240, 0.95) 100%);
+    background: linear-gradient(135deg, #719e32 0%, #5f8628 58%, #4f6f22 100%);
+}
+
+.produk-hero::before,
+.produk-hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+.produk-hero::before {
+    width: 440px;
+    height: 440px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0));
+    top: -190px;
+    left: -120px;
+}
+
+.produk-hero::after {
+    width: 360px;
+    height: 360px;
+    background: radial-gradient(circle, rgba(240, 152, 16, 0.28), rgba(240, 152, 16, 0));
+    bottom: -160px;
+    right: 80px;
 }
 
 .produk-hero__wrap {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
     gap: 36px;
@@ -115,8 +144,8 @@
     border-radius: 999px;
     font-family: "Poppins", sans-serif;
     font-size: 0.8rem;
-    color: #4b5d2f;
-    background: rgba(113, 158, 50, 0.15);
+    color: #f8f6f0;
+    background: rgba(255, 255, 255, 0.2);
     margin-bottom: 16px;
 }
 
@@ -124,13 +153,13 @@
     font-family: "Montserrat", sans-serif;
     font-size: 2.9rem;
     line-height: 1.2;
-    color: var(--produk-dark);
+    color: #ffffff;
     margin-bottom: 14px;
 }
 
 .produk-hero__desc {
     font-family: "Poppins", sans-serif;
-    color: #575a63;
+    color: rgba(255, 255, 255, 0.88);
     line-height: 1.76;
     max-width: 620px;
     margin-bottom: 24px;
@@ -144,8 +173,23 @@
 
 .produk-hero__trust {
     font-family: "Poppins", sans-serif;
-    color: #666a73;
+    color: rgba(255, 255, 255, 0.92);
     font-size: 0.9rem;
+}
+
+.produk-hero .produk-btn--primary {
+    background: #ffffff;
+    color: #4f6f22;
+    box-shadow: 0 10px 20px rgba(42, 56, 20, 0.25);
+}
+
+.produk-hero .produk-btn--primary:hover {
+    background: #f2f5e9;
+}
+
+.produk-hero .produk-btn--ghost {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.42);
 }
 
 .produk-hero__visual {

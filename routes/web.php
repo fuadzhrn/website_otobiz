@@ -17,3 +17,11 @@ Route::get('/mekanisme', function () {
 Route::get('/produk', function () {
     return view('produk');
 })->name('produk');
+
+Route::get('/gabung', function () {
+    return view('gabung');
+})->name('gabung');
+
+Route::get('/kontak', function () {
+    return view('kontak');
+})->name('kontak');
