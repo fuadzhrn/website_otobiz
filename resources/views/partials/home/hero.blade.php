@@ -1,16 +1,14 @@
 <section class="hero" aria-labelledby="hero-title">
     <div class="container hero__grid">
         <div class="hero__content fade-up">
-            <span class="hero__badge">Kemitraan Aset Produktif Berbasis Operasional Nyata</span>
-            <h1 class="hero__title" id="hero-title">Bangun Aset Kendaraan Anda Bersama Sistem Kemitraan yang Terukur</h1>
+            <span class="hero__badge">{{ $homeContent->hero_badge_text ?? 'Kemitraan Aset Produktif Berbasis Operasional Nyata' }}</span>
+            <h1 class="hero__title" id="hero-title">{{ $homeContent->hero_title ?? 'Bangun Aset Kendaraan Anda Bersama Sistem Kemitraan yang Terukur' }}</h1>
             <p class="hero__desc">
-                OTOBIZ menghadirkan model kemitraan kepemilikan kendaraan yang dikelola profesional,
-                dengan alur operasional jelas, laporan berkala, dan pendampingan agar unit berkembang
-                menjadi aset jangka panjang yang produktif.
+                {{ $homeContent->hero_description ?? 'OTOBIZ menghadirkan model kemitraan kepemilikan kendaraan yang dikelola profesional, dengan alur operasional jelas, laporan berkala, dan pendampingan agar unit berkembang menjadi aset jangka panjang yang produktif.' }}
             </p>
             <div class="hero__actions">
-                <a href="#gabung" class="btn btn--primary">Gabung Mitra</a>
-                <a href="#mekanisme" class="btn btn--ghost">Pelajari Kemitraan</a>
+                <a href="{{ $homeContent->hero_primary_button_link ?? '#gabung' }}" class="btn btn--primary">{{ $homeContent->hero_primary_button_text ?? 'Gabung Mitra' }}</a>
+                <a href="{{ $homeContent->hero_secondary_button_link ?? '#mekanisme' }}" class="btn btn--ghost">{{ $homeContent->hero_secondary_button_text ?? 'Pelajari Kemitraan' }}</a>
             </div>
             <p class="hero__trust-note"><i class="bi bi-shield-check"></i> Monitoring unit dan laporan performa dilakukan secara berkala.</p>
         </div>

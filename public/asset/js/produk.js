@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const galleryMain = document.getElementById("produk-gallery-main");
     const galleryThumbs = document.getElementById("produk-gallery-thumbs");
     const calcButton = document.getElementById("btn-hitung-simulasi");
+    const specsDataTag = document.getElementById("produk-specs-data");
+    const specsDefaultKeyTag = document.getElementById("produk-specs-default-key");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const centerOnSmallScreen = (el, wrap) => {
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    const specsData = {
+    const fallbackSpecsData = {
         confero: {
             name: "Wuling Confero",
             specs: [
@@ -56,6 +58,18 @@ document.addEventListener("DOMContentLoaded", () => {
             ]
         }
     };
+
+    let specsData = fallbackSpecsData;
+    if (specsDataTag && specsDataTag.textContent) {
+        try {
+            const parsedSpecs = JSON.parse(specsDataTag.textContent);
+            if (parsedSpecs && typeof parsedSpecs === "object") {
+                specsData = parsedSpecs;
+            }
+        } catch (error) {
+            specsData = fallbackSpecsData;
+        }
+    }
 
     const updateSpecView = (key) => {
         const data = specsData[key];
@@ -135,12 +149,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const hari = Number((document.getElementById("hari-operasional") || {}).value || 0);
             const biayaOperasional = Number((document.getElementById("biaya-operasional") || {}).value || 0);
             const biayaCicilan = Number((document.getElementById("biaya-cicilan") || {}).value || 0);
+            const resultCard = document.getElementById("simulasi-hasil");
+            const partnerSharePercent = Number((resultCard || {}).dataset?.partnerShare || 60);
+            const otobizSharePercent = Number((resultCard || {}).dataset?.otobizShare || 40);
 
             const totalOperasional = setoran * hari;
             const nettProfit = totalOperasional - biayaCicilan - biayaOperasional;
             const nettFinal = nettProfit < 0 ? 0 : nettProfit;
-            const bagianMitra = Math.round(nettFinal * 0.6);
-            const bagianOtobiz = Math.round(nettFinal * 0.4);
+            const bagianMitra = Math.round(nettFinal * (partnerSharePercent / 100));
+            const bagianOtobiz = Math.round(nettFinal * (otobizSharePercent / 100));
 
             const elTotal = document.getElementById("hasil-total-operasional");
             const elNett = document.getElementById("hasil-nett-profit");
@@ -182,5 +199,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         animatedItems.forEach((item) => observer.observe(item));
     }
-    updateSpecView("confero");
+    let initialSpecKey = Object.keys(specsData)[0] || "confero";
+    if (specsDefaultKeyTag && specsDefaultKeyTag.textContent) {
+        try {
+            const parsedDefaultKey = JSON.parse(specsDefaultKeyTag.textContent);
+            if (parsedDefaultKey) {
+                initialSpecKey = parsedDefaultKey;
+            }
+        } catch (error) {
+            initialSpecKey = Object.keys(specsData)[0] || "confero";
+        }
+    }
+    updateSpecView(initialSpecKey);
 });

@@ -1,66 +1,83 @@
 <section class="produk-packages" id="produk-packages" aria-labelledby="produk-packages-title">
     <div class="container">
         <div class="produk-head fade-up">
-            <p class="produk-head__kicker">Paket Program</p>
-            <h2 class="produk-head__title" id="produk-packages-title">Paket Kemitraan</h2>
-            <p class="produk-head__desc">Pilih paket sesuai preferensi kendaraan dan target pengembangan aset produktif Anda.</p>
+            <p class="produk-head__kicker">{{ $productContent->packages_section_kicker ?? 'Paket Program' }}</p>
+            <h2 class="produk-head__title" id="produk-packages-title">{{ $productContent->packages_section_title ?? 'Paket Kemitraan' }}</h2>
+            <p class="produk-head__desc">{{ $productContent->packages_section_description ?? 'Pilih paket sesuai preferensi kendaraan dan target pengembangan aset produktif Anda.' }}</p>
         </div>
 
         <div class="produk-package-grid">
-            <article class="produk-package-card produk-package-card--conv fade-up">
-                <div class="produk-package-card__top">
-                    <span class="produk-package-card__badge">Konvensional</span>
-                </div>
-                <h3 class="produk-package-card__name">Founding Partner Wuling Confero</h3>
-                <p class="produk-package-card__meta">Kategori: Konvensional</p>
+            @php
+                $packageItems = ($packages ?? collect())->count() ? $packages : collect([
+                    (object) [
+                        'name' => 'Founding Partner Wuling Confero',
+                        'category' => 'Konvensional',
+                        'badge_text' => 'Konvensional',
+                        'is_popular' => false,
+                        'partnership_price' => 'Rp 27.500.000',
+                        'starting_price' => 'Rp 7.500.000',
+                        'cta_text' => 'Pilih Paket',
+                        'cta_link' => '#',
+                        'benefits' => collect([
+                            (object) ['benefit_text' => 'DP unit'],
+                            (object) ['benefit_text' => 'Asuransi awal'],
+                            (object) ['benefit_text' => 'Biaya legal, pajak & administrasi'],
+                            (object) ['benefit_text' => 'GPS external'],
+                        ]),
+                    ],
+                    (object) [
+                        'name' => 'Founding Partner VinFast Limo Green',
+                        'category' => 'EV',
+                        'badge_text' => 'Electric Vehicle',
+                        'is_popular' => true,
+                        'partnership_price' => 'Rp 36.500.000',
+                        'starting_price' => 'Rp 7.500.000',
+                        'cta_text' => 'Pilih Paket',
+                        'cta_link' => '#',
+                        'benefits' => collect([
+                            (object) ['benefit_text' => 'DP unit'],
+                            (object) ['benefit_text' => 'Asuransi awal'],
+                            (object) ['benefit_text' => 'Biaya legal, pajak & administrasi'],
+                            (object) ['benefit_text' => 'GPS external'],
+                        ]),
+                    ],
+                ]);
+            @endphp
 
-                <div class="produk-package-card__price-wrap">
-                    <p class="produk-package-card__label">Biaya Kemitraan</p>
-                    <p class="produk-package-card__price">Rp 27.500.000</p>
-                    <p class="produk-package-card__start">Bergabung mulai dari Rp 7.500.000</p>
-                </div>
+            @foreach ($packageItems as $index => $item)
+                @php
+                    $isEv = strtolower((string) ($item->category ?? '')) === 'ev';
+                @endphp
+                <article class="produk-package-card {{ $isEv ? 'produk-package-card--ev' : 'produk-package-card--conv' }} fade-up {{ $index === 1 ? 'delay-1' : '' }}">
+                    <div class="produk-package-card__top">
+                        <span class="produk-package-card__badge {{ $isEv ? 'produk-package-card__badge--ev' : '' }}">{{ $item->badge_text ?? ($isEv ? 'Electric Vehicle' : 'Konvensional') }}</span>
+                        @if (!empty($item->is_popular))
+                            <span class="produk-package-card__popular">Populer</span>
+                        @endif
+                    </div>
+                    <h3 class="produk-package-card__name">{{ $item->name }}</h3>
+                    <p class="produk-package-card__meta">Kategori: {{ $item->category ?? '-' }}</p>
 
-                <ul class="produk-package-card__benefits">
-                    <li>DP unit</li>
-                    <li>Asuransi awal</li>
-                    <li>Biaya legal, pajak &amp; administrasi</li>
-                    <li>GPS external</li>
-                </ul>
+                    <div class="produk-package-card__price-wrap">
+                        <p class="produk-package-card__label">Biaya Kemitraan</p>
+                        <p class="produk-package-card__price">{{ $item->partnership_price }}</p>
+                        <p class="produk-package-card__start">Bergabung mulai dari {{ $item->starting_price }}</p>
+                    </div>
 
-                <div class="produk-package-card__actions">
-                    <a href="#" class="btn produk-btn produk-btn--primary">Pilih Paket</a>
-                    <a href="#" class="btn produk-btn produk-btn--ghost-dark">Ajukan Kemitraan</a>
-                </div>
-            </article>
+                    <ul class="produk-package-card__benefits">
+                        @foreach (($item->benefits ?? collect()) as $benefit)
+                            <li>{{ $benefit->benefit_text }}</li>
+                        @endforeach
+                    </ul>
 
-            <article class="produk-package-card produk-package-card--ev fade-up delay-1">
-                <div class="produk-package-card__top">
-                    <span class="produk-package-card__badge produk-package-card__badge--ev">Electric Vehicle</span>
-                    <span class="produk-package-card__popular">Populer</span>
-                </div>
-                <h3 class="produk-package-card__name">Founding Partner VinFast Limo Green</h3>
-                <p class="produk-package-card__meta">Kategori: EV</p>
-
-                <div class="produk-package-card__price-wrap">
-                    <p class="produk-package-card__label">Biaya Kemitraan</p>
-                    <p class="produk-package-card__price">Rp 36.500.000</p>
-                    <p class="produk-package-card__start">Bergabung mulai dari Rp 7.500.000</p>
-                </div>
-
-                <ul class="produk-package-card__benefits">
-                    <li>DP unit</li>
-                    <li>Asuransi awal</li>
-                    <li>Biaya legal, pajak &amp; administrasi</li>
-                    <li>GPS external</li>
-                </ul>
-
-                <div class="produk-package-card__actions">
-                    <a href="#" class="btn produk-btn produk-btn--primary">Pilih Paket</a>
-                    <a href="#" class="btn produk-btn produk-btn--ghost-dark">Ajukan Kemitraan</a>
-                </div>
-            </article>
+                    <div class="produk-package-card__actions">
+                        <a href="{{ $item->cta_link ?? '#' }}" class="btn produk-btn produk-btn--primary">{{ $item->cta_text ?? 'Pilih Paket' }}</a>
+                        <a href="#" class="btn produk-btn produk-btn--ghost-dark">Ajukan Kemitraan</a>
+                    </div>
+                </article>
+            @endforeach
         </div>
 
-        <p class="produk-packages__note">Harga dapat berubah sewaktu-waktu berdasarkan kuota. Syarat &amp; ketentuan berlaku.</p>
+        <p class="produk-packages__note">{{ $productContent->packages_section_note ?? 'Harga dapat berubah sewaktu-waktu berdasarkan kuota. Syarat & ketentuan berlaku.' }}</p>
     </div>
 </section>

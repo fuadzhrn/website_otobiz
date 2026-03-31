@@ -11,7 +11,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Rate limiting for login attempts
+        $middleware->throttleApi();
+        
+        // Register aliases for custom middleware
+        $middleware->alias([
+            'throttle.login' => \App\Http\Middleware\ThrottleLoginAttempts::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

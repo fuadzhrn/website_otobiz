@@ -1,16 +1,16 @@
 <section class="produk-hero" id="produk-hero" aria-labelledby="produk-hero-title">
     <div class="container produk-hero__wrap">
         <div class="produk-hero__content fade-up is-visible">
-            <p class="produk-hero__badge">OTOBIZ Product Line</p>
-            <h1 class="produk-hero__title" id="produk-hero-title">Pilih Paket Kemitraan Kendaraan Produktif Anda</h1>
+            <p class="produk-hero__badge">{{ $productContent->hero_badge_text ?? 'OTOBIZ Product Line' }}</p>
+            <h1 class="produk-hero__title" id="produk-hero-title">{{ $productContent->hero_title ?? 'Pilih Paket Kemitraan Kendaraan Produktif Anda' }}</h1>
             <p class="produk-hero__desc">
-                Dari kendaraan konvensional hingga EV, OTOBIZ membantu Anda memiliki aset yang bekerja secara profesional.
+                {{ $productContent->hero_description ?? 'Dari kendaraan konvensional hingga EV, OTOBIZ membantu Anda memiliki aset yang bekerja secara profesional.' }}
             </p>
             <div class="produk-hero__actions">
-                <a href="#produk-simulation" class="btn produk-btn produk-btn--primary">Konsultasi Sekarang</a>
-                <a href="#produk-packages" class="btn produk-btn produk-btn--ghost">Pilih Paket</a>
+                <a href="{{ $productContent->hero_primary_button_link ?? '#produk-simulation' }}" class="btn produk-btn produk-btn--primary">{{ $productContent->hero_primary_button_text ?? 'Konsultasi Sekarang' }}</a>
+                <a href="{{ $productContent->hero_secondary_button_link ?? '#produk-packages' }}" class="btn produk-btn produk-btn--ghost">{{ $productContent->hero_secondary_button_text ?? 'Pilih Paket' }}</a>
             </div>
-            <p class="produk-hero__trust">Terstruktur. Transparan. Berorientasi aset jangka panjang.</p>
+            <p class="produk-hero__trust">{{ $productContent->hero_trust_text ?? 'Terstruktur. Transparan. Berorientasi aset jangka panjang.' }}</p>
         </div>
 
         <div class="produk-hero__visual fade-up delay-1">
