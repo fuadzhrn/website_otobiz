@@ -38,4 +38,9 @@ class ProductUnit extends Model
     {
         return $this->hasMany(ProductUnitGallery::class);
     }
+
+    public function packages(): HasMany
+    {
+        return $this->hasMany(ProductPackage::class);
+    }
 }

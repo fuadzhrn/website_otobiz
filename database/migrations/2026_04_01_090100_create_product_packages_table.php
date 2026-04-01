@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('product_packages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_unit_id')->constrained('product_units')->cascadeOnDelete();
             $table->string('name');
             $table->string('category')->nullable();
             $table->string('badge_text')->nullable();

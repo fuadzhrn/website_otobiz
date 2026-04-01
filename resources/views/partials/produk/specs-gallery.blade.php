@@ -31,7 +31,7 @@
             @forelse ($specSwitchItems as $index => $unit)
                 <button type="button" class="produk-switch {{ $index === 0 ? 'is-active' : '' }}" data-unit="{{ $unit->spec_key ?? '' }}">{{ $unit->name }}</button>
             @empty
-                <button type="button" class="produk-switch is-active" data-unit="confero">Wuling Confero</button>
+                <button type="button" class="produk-switch is-active" data-unit="{{ $defaultSpecKey ?? array_key_first($specsSource) }}">{{ $firstSpec['name'] ?? 'Unit OTOBIZ' }}</button>
             @endforelse
         </div>
 

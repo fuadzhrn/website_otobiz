@@ -8,8 +8,12 @@
 
         <div class="produk-units__filters" id="produk-unit-filters">
             <button type="button" class="produk-filter is-active" data-filter="all">Semua</button>
-            <button type="button" class="produk-filter" data-filter="ev">EV</button>
-            <button type="button" class="produk-filter" data-filter="konvensional">Konvensional</button>
+            @foreach (($unitCategories ?? collect()) as $category)
+                @php
+                    $categorySlug = Illuminate\Support\Str::slug($category);
+                @endphp
+                <button type="button" class="produk-filter" data-filter="{{ $categorySlug }}">{{ $category }}</button>
+            @endforeach
         </div>
 
         <div class="produk-unit-grid" id="produk-unit-grid">
@@ -38,10 +42,11 @@
 
             @foreach ($unitItems as $index => $item)
                 @php
-                    $category = strtolower((string) ($item->category ?? ''));
-                    $isEv = $category === 'ev';
+                    $category = (string) ($item->category ?? '');
+                    $categorySlug = Illuminate\Support\Str::slug($category ?: 'lainnya');
+                    $isEv = strtolower($category) === 'ev';
                 @endphp
-                <article class="produk-unit-card fade-up {{ $index === 1 ? 'delay-1' : '' }}" data-category="{{ $isEv ? 'ev' : 'konvensional' }}">
+                <article class="produk-unit-card fade-up {{ $index === 1 ? 'delay-1' : '' }}" data-category="{{ $categorySlug }}">
                     <img src="{{ $item->main_image }}" alt="{{ $item->name }}" class="produk-unit-card__image" />
                     <div class="produk-unit-card__body">
                         <div class="produk-unit-card__badges">

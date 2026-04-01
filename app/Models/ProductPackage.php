@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ProductPackage extends Model
@@ -11,6 +12,7 @@ class ProductPackage extends Model
     use HasFactory;
 
     protected $fillable = [
+        'product_unit_id',
         'name',
         'category',
         'badge_text',
@@ -36,5 +38,10 @@ class ProductPackage extends Model
     public function benefits(): HasMany
     {
         return $this->hasMany(ProductPackageBenefit::class);
+    }
+
+    public function unit(): BelongsTo
+    {
+        return $this->belongsTo(ProductUnit::class, 'product_unit_id');
     }
 }

@@ -18,6 +18,7 @@ class ProductController extends Controller
         $packages = ProductPackage::query()
             ->where('is_active', true)
             ->with([
+                'unit',
                 'benefits' => function ($query) {
                     $query->where('is_active', true)
                         ->orderBy('sort_order')
@@ -48,6 +49,16 @@ class ProductController extends Controller
             ->orderBy('sort_order')
             ->orderBy('id')
             ->get();
+
+        $unitCategories = $units
+            ->map(function ($unit) {
+                return trim((string) ($unit->category ?? ''));
+            })
+            ->filter()
+            ->unique(function ($category) {
+                return Str::slug($category);
+            })
+            ->values();
 
         $productSpecsData = [];
         $defaultSpecKey = 'confero';
@@ -113,6 +124,7 @@ class ProductController extends Controller
             'units' => $units,
             'simulationContent' => $simulationContent,
             'simulationHighlights' => $simulationHighlights,
+            'unitCategories' => $unitCategories,
             'productSpecsData' => $productSpecsData,
             'defaultSpecKey' => $defaultSpecKey,
         ]);

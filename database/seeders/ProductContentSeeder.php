@@ -8,6 +8,7 @@ use App\Models\ProductSimulationContent;
 use App\Models\ProductSimulationHighlight;
 use App\Models\ProductUnit;
 use Illuminate\Database\Seeder;
+use RuntimeException;
 
 class ProductContentSeeder extends Seeder
 {
@@ -48,66 +49,6 @@ class ProductContentSeeder extends Seeder
                 'cta_third_button_link' => '#',
             ]
         );
-
-        $packagesData = [
-            [
-                'name' => 'Founding Partner Wuling Confero',
-                'category' => 'Konvensional',
-                'badge_text' => 'Konvensional',
-                'is_popular' => false,
-                'partnership_price' => 'Rp 27.500.000',
-                'starting_price' => 'Rp 7.500.000',
-                'description' => null,
-                'cta_text' => 'Pilih Paket',
-                'cta_link' => '#',
-                'sort_order' => 1,
-                'is_active' => true,
-                'benefits' => [
-                    'DP unit',
-                    'Asuransi awal',
-                    'Biaya legal, pajak & administrasi',
-                    'GPS external',
-                ],
-            ],
-            [
-                'name' => 'Founding Partner VinFast Limo Green',
-                'category' => 'EV',
-                'badge_text' => 'Electric Vehicle',
-                'is_popular' => true,
-                'partnership_price' => 'Rp 36.500.000',
-                'starting_price' => 'Rp 7.500.000',
-                'description' => null,
-                'cta_text' => 'Pilih Paket',
-                'cta_link' => '#',
-                'sort_order' => 2,
-                'is_active' => true,
-                'benefits' => [
-                    'DP unit',
-                    'Asuransi awal',
-                    'Biaya legal, pajak & administrasi',
-                    'GPS external',
-                ],
-            ],
-        ];
-
-        foreach ($packagesData as $packageData) {
-            $benefits = $packageData['benefits'];
-            unset($packageData['benefits']);
-
-            $package = ProductPackage::query()->updateOrCreate(
-                ['name' => $packageData['name']],
-                $packageData
-            );
-
-            $package->benefits()->delete();
-            foreach ($benefits as $index => $benefitText) {
-                $package->benefits()->create([
-                    'benefit_text' => $benefitText,
-                    'sort_order' => $index + 1,
-                    'is_active' => true,
-                ]);
-            }
-        }
 
         $unitsData = [
             [
@@ -152,6 +93,8 @@ class ProductContentSeeder extends Seeder
             ],
         ];
 
+        $unitIdByName = [];
+
         foreach ($unitsData as $unitData) {
             $galleries = $unitData['galleries'];
             unset($unitData['galleries']);
@@ -161,11 +104,81 @@ class ProductContentSeeder extends Seeder
                 $unitData
             );
 
+            $unitIdByName[$unit->name] = $unit->id;
+
             $unit->galleries()->delete();
             foreach ($galleries as $index => $gallery) {
                 $unit->galleries()->create([
                     'image_path' => $gallery[0],
                     'alt_text' => $gallery[1],
+                    'sort_order' => $index + 1,
+                    'is_active' => true,
+                ]);
+            }
+        }
+
+        $packagesData = [
+            [
+                'name' => 'Founding Partner Wuling Confero',
+                'unit_name' => 'Wuling Confero',
+                'category' => 'Konvensional',
+                'badge_text' => 'Konvensional',
+                'is_popular' => false,
+                'partnership_price' => 'Rp 27.500.000',
+                'starting_price' => 'Rp 7.500.000',
+                'description' => null,
+                'cta_text' => 'Pilih Paket',
+                'cta_link' => '#',
+                'sort_order' => 1,
+                'is_active' => true,
+                'benefits' => [
+                    'DP unit',
+                    'Asuransi awal',
+                    'Biaya legal, pajak & administrasi',
+                    'GPS external',
+                ],
+            ],
+            [
+                'name' => 'Founding Partner VinFast Limo Green',
+                'unit_name' => 'VinFast Limo Green',
+                'category' => 'EV',
+                'badge_text' => 'Electric Vehicle',
+                'is_popular' => true,
+                'partnership_price' => 'Rp 36.500.000',
+                'starting_price' => 'Rp 7.500.000',
+                'description' => null,
+                'cta_text' => 'Pilih Paket',
+                'cta_link' => '#',
+                'sort_order' => 2,
+                'is_active' => true,
+                'benefits' => [
+                    'DP unit',
+                    'Asuransi awal',
+                    'Biaya legal, pajak & administrasi',
+                    'GPS external',
+                ],
+            ],
+        ];
+
+        foreach ($packagesData as $packageData) {
+            $benefits = $packageData['benefits'];
+            $unitName = $packageData['unit_name'];
+            unset($packageData['benefits'], $packageData['unit_name']);
+
+            $packageData['product_unit_id'] = $unitIdByName[$unitName] ?? null;
+            if (!$packageData['product_unit_id']) {
+                throw new RuntimeException('Product unit not found for package: ' . $packageData['name']);
+            }
+
+            $package = ProductPackage::query()->updateOrCreate(
+                ['name' => $packageData['name']],
+                $packageData
+            );
+
+            $package->benefits()->delete();
+            foreach ($benefits as $index => $benefitText) {
+                $package->benefits()->create([
+                    'benefit_text' => $benefitText,
                     'sort_order' => $index + 1,
                     'is_active' => true,
                 ]);

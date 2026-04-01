@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\AboutController as AdminAboutController;
 use App\Http\Controllers\Admin\MekanismeController as AdminMekanismeController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
 
 /**
  * Public Routes
@@ -102,4 +103,27 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::post('/mekanisme/faqs', [AdminMekanismeController::class, 'storeFaq'])->name('admin.mekanisme.faqs.store');
     Route::put('/mekanisme/faqs/{id}', [AdminMekanismeController::class, 'updateFaq'])->name('admin.mekanisme.faqs.update');
     Route::delete('/mekanisme/faqs/{id}', [AdminMekanismeController::class, 'destroyFaq'])->name('admin.mekanisme.faqs.destroy');
+
+    Route::get('/produk/edit', [AdminProductController::class, 'edit'])->name('admin.produk.edit');
+    Route::put('/produk/update', [AdminProductController::class, 'update'])->name('admin.produk.update');
+
+    Route::post('/produk/units', [AdminProductController::class, 'storeUnit'])->name('admin.produk.units.store');
+    Route::put('/produk/units/{id}', [AdminProductController::class, 'updateUnit'])->name('admin.produk.units.update');
+    Route::delete('/produk/units/{id}', [AdminProductController::class, 'destroyUnit'])->name('admin.produk.units.destroy');
+
+    Route::post('/produk/units/{id}/galleries', [AdminProductController::class, 'storeGallery'])->name('admin.produk.galleries.store');
+    Route::put('/produk/unit-galleries/{id}', [AdminProductController::class, 'updateGallery'])->name('admin.produk.galleries.update');
+    Route::delete('/produk/unit-galleries/{id}', [AdminProductController::class, 'destroyGallery'])->name('admin.produk.galleries.destroy');
+
+    Route::post('/produk/packages', [AdminProductController::class, 'storePackage'])->name('admin.produk.packages.store');
+    Route::put('/produk/packages/{id}', [AdminProductController::class, 'updatePackage'])->name('admin.produk.packages.update');
+    Route::delete('/produk/packages/{id}', [AdminProductController::class, 'destroyPackage'])->name('admin.produk.packages.destroy');
+
+    Route::post('/produk/packages/{id}/benefits', [AdminProductController::class, 'storeBenefit'])->name('admin.produk.benefits.store');
+    Route::put('/produk/package-benefits/{id}', [AdminProductController::class, 'updateBenefit'])->name('admin.produk.benefits.update');
+    Route::delete('/produk/package-benefits/{id}', [AdminProductController::class, 'destroyBenefit'])->name('admin.produk.benefits.destroy');
+
+    Route::post('/produk/simulation-highlights', [AdminProductController::class, 'storeSimulationHighlight'])->name('admin.produk.simulation-highlights.store');
+    Route::put('/produk/simulation-highlights/{id}', [AdminProductController::class, 'updateSimulationHighlight'])->name('admin.produk.simulation-highlights.update');
+    Route::delete('/produk/simulation-highlights/{id}', [AdminProductController::class, 'destroySimulationHighlight'])->name('admin.produk.simulation-highlights.destroy');
 });

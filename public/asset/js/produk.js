@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const specsDataTag = document.getElementById("produk-specs-data");
     const specsDefaultKeyTag = document.getElementById("produk-specs-default-key");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const getFirstSpecKey = () => Object.keys(specsData)[0] || "";
 
     const centerOnSmallScreen = (el, wrap) => {
         if (!el || !wrap || window.innerWidth > 767) {
@@ -77,6 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        const images = Array.isArray(data.images) && data.images.length
+            ? data.images
+            : [["", "Preview unit OTOBIZ"]];
+
         specName.textContent = data.name;
         specList.innerHTML = data.specs
             .map((item) => {
@@ -84,10 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .join("");
 
-        galleryMain.src = data.images[0][0];
-        galleryMain.alt = data.images[0][1];
+        galleryMain.src = images[0][0];
+        galleryMain.alt = images[0][1];
 
-        galleryThumbs.innerHTML = data.images
+        galleryThumbs.innerHTML = images
             .map((image, index) => {
                 const activeClass = index === 0 ? " is-active" : "";
                 return '<button type="button" class="produk-gallery__thumb' + activeClass + '" data-src="' + image[0] + '" data-alt="' + image[1] + '"><img src="' + image[0] + '" alt="' + image[1] + '"></button>';
@@ -134,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", () => {
             specSwitches.forEach((item) => item.classList.remove("is-active"));
             button.classList.add("is-active");
-            updateSpecView(button.getAttribute("data-unit") || "confero");
+            updateSpecView(button.getAttribute("data-unit") || getFirstSpecKey());
             centerOnSmallScreen(button, specSwitchWrap);
         });
     });
@@ -199,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         animatedItems.forEach((item) => observer.observe(item));
     }
-    let initialSpecKey = Object.keys(specsData)[0] || "confero";
+    let initialSpecKey = getFirstSpecKey();
     if (specsDefaultKeyTag && specsDefaultKeyTag.textContent) {
         try {
             const parsedDefaultKey = JSON.parse(specsDefaultKeyTag.textContent);
@@ -207,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 initialSpecKey = parsedDefaultKey;
             }
         } catch (error) {
-            initialSpecKey = Object.keys(specsData)[0] || "confero";
+            initialSpecKey = getFirstSpecKey();
         }
     }
     updateSpecView(initialSpecKey);

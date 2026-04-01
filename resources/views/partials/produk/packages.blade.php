@@ -48,7 +48,7 @@
                 @php
                     $isEv = strtolower((string) ($item->category ?? '')) === 'ev';
                 @endphp
-                <article class="produk-package-card {{ $isEv ? 'produk-package-card--ev' : 'produk-package-card--conv' }} fade-up {{ $index === 1 ? 'delay-1' : '' }}">
+                <article class="produk-package-card {{ $isEv ? 'produk-package-card--ev' : 'produk-package-card--conv' }} fade-up {{ $index === 1 ? 'delay-1' : '' }}" data-unit-id="{{ $item->product_unit_id ?? '' }}" data-unit-name="{{ $item->unit->name ?? '' }}">
                     <div class="produk-package-card__top">
                         <span class="produk-package-card__badge {{ $isEv ? 'produk-package-card__badge--ev' : '' }}">{{ $item->badge_text ?? ($isEv ? 'Electric Vehicle' : 'Konvensional') }}</span>
                         @if (!empty($item->is_popular))

@@ -60,7 +60,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link" data-page="produk">
+                    <a href="{{ route('admin.produk.edit') }}" class="menu-link" data-page="produk">
                         <span class="menu-icon"><i class="fa-solid fa-box-open"></i></span>
                         <span class="menu-label">Produk</span>
                     </a>
@@ -192,9 +192,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn-card" data-page="produk">
-                                Kelola Konten
-                            </button>
+                            <a href="{{ route('admin.produk.edit') }}" class="btn-card" data-page="produk">Kelola Konten</a>
                         </div>
                     </div>
 
