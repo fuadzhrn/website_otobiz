@@ -1,0 +1,259 @@
+:root {
+    --otobiz-green: #719E32;
+    --otobiz-orange: #F09810;
+    --otobiz-cream: #F8F6F0;
+    --otobiz-dark: #44444A;
+    --otobiz-white: #FFFFFF;
+    --otobiz-border: #DCD7CA;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    color: var(--otobiz-dark);
+    background: linear-gradient(180deg, #f3f0e7 0%, #f8f6f0 100%);
+}
+
+h1, h2, h3 {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+}
+
+.admin-kontak-wrap {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 24px 18px 80px;
+}
+
+.page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.breadcrumb {
+    font-size: 0.84rem;
+    color: #777;
+    margin-bottom: 4px;
+}
+
+.page-title {
+    font-size: 2rem;
+}
+
+.page-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.section-card {
+    background: var(--otobiz-white);
+    border: 1px solid var(--otobiz-border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(68, 68, 74, 0.05);
+    margin-top: 18px;
+}
+
+.section-head {
+    background: linear-gradient(90deg, rgba(113, 158, 50, 0.14), rgba(240, 152, 16, 0.15));
+    border-bottom: 1px solid var(--otobiz-border);
+    padding: 18px;
+}
+
+.section-title {
+    font-size: 1.24rem;
+    margin-bottom: 4px;
+}
+
+.section-subtitle {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.section-body {
+    padding: 18px;
+}
+
+.flash {
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+}
+
+.flash ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+}
+
+.flash-success {
+    background: #eaf6d8;
+    border: 1px solid #bddc90;
+}
+
+.flash-error {
+    background: #ffe7e7;
+    border: 1px solid #ffbaba;
+}
+
+.editor-block,
+.editor-item {
+    border: 1px solid var(--otobiz-border);
+    border-radius: 10px;
+    background: #fff;
+    margin-bottom: 12px;
+}
+
+.editor-block > summary,
+.editor-item > summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-weight: 600;
+}
+
+.editor-block > summary::-webkit-details-marker,
+.editor-item > summary::-webkit-details-marker {
+    display: none;
+}
+
+.editor-item.no-summary {
+    padding: 0;
+}
+
+.item-body {
+    border-top: 1px solid var(--otobiz-border);
+    padding: 14px;
+}
+
+.meta {
+    color: #747474;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.stack-form {
+    display: grid;
+    gap: 12px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    padding: 10px 11px;
+    font: inherit;
+    color: var(--otobiz-dark);
+    background: #fff;
+}
+
+textarea {
+    min-height: 92px;
+    resize: vertical;
+}
+
+.checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.checkbox-label input {
+    width: auto;
+}
+
+.btn {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-primary {
+    background: var(--otobiz-green);
+    color: #fff;
+}
+
+.btn-accent {
+    background: var(--otobiz-orange);
+    color: #fff;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--otobiz-dark);
+    color: var(--otobiz-dark);
+}
+
+.btn-danger {
+    background: #b83b3b;
+    color: #fff;
+}
+
+.row-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.inline-delete {
+    margin-top: 8px;
+}
+
+.empty-text {
+    margin: 0;
+    color: #7c7c7c;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+    .page-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkbox-label {
+        margin-top: 0;
+    }
+}

@@ -66,13 +66,13 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link" data-page="gabung">
+                    <a href="{{ route('admin.gabung.edit') }}" class="menu-link" data-page="gabung">
                         <span class="menu-icon"><i class="fa-solid fa-handshake"></i></span>
                         <span class="menu-label">Gabung Mitra</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link" data-page="kontak">
+                    <a href="{{ route('admin.kontak.edit') }}" class="menu-link" data-page="kontak">
                         <span class="menu-icon"><i class="fa-solid fa-phone"></i></span>
                         <span class="menu-label">Kontak & Support</span>
                     </a>
@@ -212,9 +212,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn-card" data-page="gabung">
-                                Kelola Konten
-                            </button>
+                            <a href="{{ route('admin.gabung.edit') }}" class="btn-card" data-page="gabung">Kelola Konten</a>
                         </div>
                     </div>
 
@@ -234,9 +232,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn-card" data-page="kontak">
-                                Kelola Konten
-                            </button>
+                            <a href="{{ route('admin.kontak.edit') }}" class="btn-card" data-page="kontak">Kelola Konten</a>
                         </div>
                     </div>
                 </div>

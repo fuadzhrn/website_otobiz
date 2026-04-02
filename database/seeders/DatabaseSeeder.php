@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             AboutContentSeeder::class,
             MekanismeContentSeeder::class,
             ProductContentSeeder::class,
+            JoinContentSeeder::class,
+            ContactContentSeeder::class,
         ]);
     }
 }

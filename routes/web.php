@@ -5,12 +5,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\MekanismeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\JoinController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\AboutController as AdminAboutController;
 use App\Http\Controllers\Admin\MekanismeController as AdminMekanismeController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\JoinController as AdminJoinController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
 
 /**
  * Public Routes
@@ -23,13 +27,9 @@ Route::get('/mekanisme', [MekanismeController::class, 'index'])->name('mekanisme
 
 Route::get('/produk', [ProductController::class, 'index'])->name('produk');
 
-Route::get('/gabung', function () {
-    return view('gabung');
-})->name('gabung');
+Route::get('/gabung', [JoinController::class, 'index'])->name('gabung');
 
-Route::get('/kontak', function () {
-    return view('kontak');
-})->name('kontak');
+Route::get('/kontak', [ContactController::class, 'index'])->name('kontak');
 
 /**
  * Auth Routes
@@ -126,4 +126,50 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::post('/produk/simulation-highlights', [AdminProductController::class, 'storeSimulationHighlight'])->name('admin.produk.simulation-highlights.store');
     Route::put('/produk/simulation-highlights/{id}', [AdminProductController::class, 'updateSimulationHighlight'])->name('admin.produk.simulation-highlights.update');
     Route::delete('/produk/simulation-highlights/{id}', [AdminProductController::class, 'destroySimulationHighlight'])->name('admin.produk.simulation-highlights.destroy');
+
+    Route::get('/gabung/edit', [AdminJoinController::class, 'edit'])->name('admin.gabung.edit');
+    Route::put('/gabung/update', [AdminJoinController::class, 'update'])->name('admin.gabung.update');
+
+    Route::post('/gabung/form-fields', [AdminJoinController::class, 'storeFormField'])->name('admin.gabung.form-fields.store');
+    Route::put('/gabung/form-fields/{id}', [AdminJoinController::class, 'updateFormField'])->name('admin.gabung.form-fields.update');
+    Route::delete('/gabung/form-fields/{id}', [AdminJoinController::class, 'destroyFormField'])->name('admin.gabung.form-fields.destroy');
+
+    Route::post('/gabung/selection-steps', [AdminJoinController::class, 'storeSelectionStep'])->name('admin.gabung.selection-steps.store');
+    Route::put('/gabung/selection-steps/{id}', [AdminJoinController::class, 'updateSelectionStep'])->name('admin.gabung.selection-steps.update');
+    Route::delete('/gabung/selection-steps/{id}', [AdminJoinController::class, 'destroySelectionStep'])->name('admin.gabung.selection-steps.destroy');
+
+    Route::post('/gabung/selection-steps/{id}/points', [AdminJoinController::class, 'storeSelectionStepPoint'])->name('admin.gabung.selection-step-points.store');
+    Route::put('/gabung/selection-step-points/{id}', [AdminJoinController::class, 'updateSelectionStepPoint'])->name('admin.gabung.selection-step-points.update');
+    Route::delete('/gabung/selection-step-points/{id}', [AdminJoinController::class, 'destroySelectionStepPoint'])->name('admin.gabung.selection-step-points.destroy');
+
+    Route::post('/gabung/sales-contacts', [AdminJoinController::class, 'storeSalesContact'])->name('admin.gabung.sales-contacts.store');
+    Route::put('/gabung/sales-contacts/{id}', [AdminJoinController::class, 'updateSalesContact'])->name('admin.gabung.sales-contacts.update');
+    Route::delete('/gabung/sales-contacts/{id}', [AdminJoinController::class, 'destroySalesContact'])->name('admin.gabung.sales-contacts.destroy');
+
+    Route::post('/gabung/sales-highlights', [AdminJoinController::class, 'storeSalesHighlight'])->name('admin.gabung.sales-highlights.store');
+    Route::put('/gabung/sales-highlights/{id}', [AdminJoinController::class, 'updateSalesHighlight'])->name('admin.gabung.sales-highlights.update');
+    Route::delete('/gabung/sales-highlights/{id}', [AdminJoinController::class, 'destroySalesHighlight'])->name('admin.gabung.sales-highlights.destroy');
+
+    Route::get('/kontak/edit', [AdminContactController::class, 'edit'])->name('admin.kontak.edit');
+    Route::put('/kontak/update', [AdminContactController::class, 'update'])->name('admin.kontak.update');
+
+    Route::post('/kontak/quick-cards', [AdminContactController::class, 'storeQuickCard'])->name('admin.kontak.quick-cards.store');
+    Route::put('/kontak/quick-cards/{id}', [AdminContactController::class, 'updateQuickCard'])->name('admin.kontak.quick-cards.update');
+    Route::delete('/kontak/quick-cards/{id}', [AdminContactController::class, 'destroyQuickCard'])->name('admin.kontak.quick-cards.destroy');
+
+    Route::post('/kontak/form-fields', [AdminContactController::class, 'storeFormField'])->name('admin.kontak.form-fields.store');
+    Route::put('/kontak/form-fields/{id}', [AdminContactController::class, 'updateFormField'])->name('admin.kontak.form-fields.update');
+    Route::delete('/kontak/form-fields/{id}', [AdminContactController::class, 'destroyFormField'])->name('admin.kontak.form-fields.destroy');
+
+    Route::post('/kontak/locations', [AdminContactController::class, 'storeLocation'])->name('admin.kontak.locations.store');
+    Route::put('/kontak/locations/{id}', [AdminContactController::class, 'updateLocation'])->name('admin.kontak.locations.update');
+    Route::delete('/kontak/locations/{id}', [AdminContactController::class, 'destroyLocation'])->name('admin.kontak.locations.destroy');
+
+    Route::post('/kontak/support-cards', [AdminContactController::class, 'storeSupportCard'])->name('admin.kontak.support-cards.store');
+    Route::put('/kontak/support-cards/{id}', [AdminContactController::class, 'updateSupportCard'])->name('admin.kontak.support-cards.update');
+    Route::delete('/kontak/support-cards/{id}', [AdminContactController::class, 'destroySupportCard'])->name('admin.kontak.support-cards.destroy');
+
+    Route::post('/kontak/support-highlights', [AdminContactController::class, 'storeSupportHighlight'])->name('admin.kontak.support-highlights.store');
+    Route::put('/kontak/support-highlights/{id}', [AdminContactController::class, 'updateSupportHighlight'])->name('admin.kontak.support-highlights.update');
+    Route::delete('/kontak/support-highlights/{id}', [AdminContactController::class, 'destroySupportHighlight'])->name('admin.kontak.support-highlights.destroy');
 });

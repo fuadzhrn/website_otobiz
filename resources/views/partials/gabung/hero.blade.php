@@ -1,19 +1,30 @@
 <section class="gabung-hero" id="gabung-hero" aria-labelledby="gabung-hero-title">
+    @php
+        $heroBadges = array_values(array_filter([
+            $joinContent->hero_badge_one ?? null,
+            $joinContent->hero_badge_two ?? null,
+            $joinContent->hero_badge_three ?? null,
+        ]));
+    @endphp
     <div class="container gabung-hero__layout">
         <div class="gabung-hero__content fade-up is-visible">
             <p class="gabung-hero__kicker">Gabung Mitra OTOBIZ</p>
-            <h1 class="gabung-hero__title" id="gabung-hero-title">Mulai Langkah Anda Menjadi Mitra OTOBIZ</h1>
+            <h1 class="gabung-hero__title" id="gabung-hero-title">{{ $joinContent->hero_title ?? 'Mulai Langkah Anda Menjadi Mitra OTOBIZ' }}</h1>
             <p class="gabung-hero__desc">
-                Isi formulir pendaftaran, pahami proses seleksi, dan konsultasikan kebutuhan Anda bersama tim OTOBIZ untuk memulai kemitraan kendaraan produktif.
+                {{ $joinContent->hero_description ?? 'Isi formulir pendaftaran, pahami proses seleksi, dan konsultasikan kebutuhan Anda bersama tim OTOBIZ untuk memulai kemitraan kendaraan produktif.' }}
             </p>
             <div class="gabung-hero__actions">
-                <a href="#gabung-form" class="btn gabung-btn gabung-btn--primary js-scroll-to-form">Isi Formulir</a>
-                <a href="#gabung-sales" class="btn gabung-btn gabung-btn--ghost">Konsultasi Sekarang</a>
+                <a href="{{ $joinContent->hero_primary_button_link ?? '#gabung-form' }}" class="btn gabung-btn gabung-btn--primary js-scroll-to-form">{{ $joinContent->hero_primary_button_text ?? 'Isi Formulir' }}</a>
+                <a href="{{ $joinContent->hero_secondary_button_link ?? '#gabung-sales' }}" class="btn gabung-btn gabung-btn--ghost">{{ $joinContent->hero_secondary_button_text ?? 'Konsultasi Sekarang' }}</a>
             </div>
             <div class="gabung-hero__labels">
-                <span>Proses Terarah</span>
-                <span>Konsultasi Profesional</span>
-                <span>Sistem Transparan</span>
+                @forelse ($heroBadges as $badge)
+                    <span>{{ $badge }}</span>
+                @empty
+                    <span>Proses Terarah</span>
+                    <span>Konsultasi Profesional</span>
+                    <span>Sistem Transparan</span>
+                @endforelse
             </div>
         </div>
 

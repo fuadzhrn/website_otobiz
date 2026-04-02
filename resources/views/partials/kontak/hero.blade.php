@@ -1,30 +1,31 @@
 <section class="kontak-hero" id="kontak-hero" aria-labelledby="kontak-hero-title">
+    @php
+        $resolvedQuickCards = ($quickCards ?? collect())->count()
+            ? $quickCards
+            : collect([
+                (object) ['title' => 'Konsultasi Kemitraan', 'description' => 'Bantu pilih jalur kemitraan sesuai profil Anda.', 'icon' => 'bi bi-briefcase'],
+                (object) ['title' => 'Customer Support', 'description' => 'Dukungan cepat untuk pertanyaan program dan layanan.', 'icon' => 'bi bi-headset'],
+                (object) ['title' => 'Lokasi Kantor', 'description' => 'Informasi alamat HO dan pool operasional OTOBIZ.', 'icon' => 'bi bi-geo-alt'],
+            ]);
+    @endphp
     <div class="container kontak-hero__layout">
         <div class="kontak-hero__content fade-up is-visible">
             <p class="kontak-hero__kicker">OTOBIZ Contact Hub</p>
-            <h1 class="kontak-hero__title" id="kontak-hero-title">Hubungi OTOBIZ dengan Cara yang Paling Nyaman untuk Anda</h1>
+            <h1 class="kontak-hero__title" id="kontak-hero-title">{{ $contactContent->hero_title ?? 'Hubungi OTOBIZ dengan Cara yang Paling Nyaman untuk Anda' }}</h1>
             <p class="kontak-hero__desc">
-                Dari pertanyaan awal, kebutuhan konsultasi, hingga informasi lokasi dan layanan support, tim OTOBIZ siap membantu Anda dengan lebih cepat dan terarah.
+                {{ $contactContent->hero_description ?? 'Dari pertanyaan awal, kebutuhan konsultasi, hingga informasi lokasi dan layanan support, tim OTOBIZ siap membantu Anda dengan lebih cepat dan terarah.' }}
             </p>
-            <a href="#contact-form" class="btn kontak-btn kontak-btn--primary js-kontak-scroll">Kirim Pesan</a>
+            <a href="{{ $contactContent->hero_small_button_link ?? '#contact-form' }}" class="btn kontak-btn kontak-btn--primary js-kontak-scroll">{{ $contactContent->hero_small_button_text ?? 'Kirim Pesan' }}</a>
         </div>
 
         <div class="kontak-hero__quick fade-up delay-1">
-            <article class="kontak-quick-card">
-                <i class="bi bi-briefcase"></i>
-                <h3>Konsultasi Kemitraan</h3>
-                <p>Bantu pilih jalur kemitraan sesuai profil Anda.</p>
-            </article>
-            <article class="kontak-quick-card">
-                <i class="bi bi-headset"></i>
-                <h3>Customer Support</h3>
-                <p>Dukungan cepat untuk pertanyaan program dan layanan.</p>
-            </article>
-            <article class="kontak-quick-card">
-                <i class="bi bi-geo-alt"></i>
-                <h3>Lokasi Kantor</h3>
-                <p>Informasi alamat HO dan pool operasional OTOBIZ.</p>
-            </article>
+            @foreach ($resolvedQuickCards as $card)
+                <article class="kontak-quick-card">
+                    <i class="{{ $card->icon ?: 'bi bi-info-circle' }}"></i>
+                    <h3>{{ $card->title }}</h3>
+                    <p>{{ $card->description }}</p>
+                </article>
+            @endforeach
         </div>
     </div>
 </section>

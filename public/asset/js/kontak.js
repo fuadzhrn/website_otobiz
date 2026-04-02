@@ -100,23 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 successMessage.textContent = "";
             }
 
-            const requiredIds = [
-                "kontak-nama",
-                "kontak-email",
-                "kontak-whatsapp",
-                "kontak-subjek",
-                "kontak-jenis",
-                "kontak-pesan"
-            ];
+            const requiredFields = form.querySelectorAll(".kontak-field input[required], .kontak-field select[required], .kontak-field textarea[required]");
 
             let valid = true;
 
-            requiredIds.forEach((id) => {
-                const field = document.getElementById(id);
-                if (!field) {
-                    return;
-                }
-
+            requiredFields.forEach((field) => {
                 clearFieldError(field);
 
                 if (!field.value.trim()) {
@@ -125,17 +113,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            const emailField = document.getElementById("kontak-email");
-            if (emailField && emailField.value.trim() && !isValidEmail(emailField.value.trim())) {
-                setFieldError(emailField, "Format email belum valid.");
-                valid = false;
-            }
+            const customValidationFields = form.querySelectorAll(".kontak-field [data-validate]");
+            customValidationFields.forEach((field) => {
+                const value = field.value.trim();
+                const type = field.getAttribute("data-validate");
 
-            const phoneField = document.getElementById("kontak-whatsapp");
-            if (phoneField && phoneField.value.trim() && !isValidWhatsapp(phoneField.value.trim())) {
-                setFieldError(phoneField, "Nomor WhatsApp tidak valid.");
-                valid = false;
-            }
+                if (!value) {
+                    return;
+                }
+
+                if (type === "email" && !isValidEmail(value)) {
+                    setFieldError(field, "Format email belum valid.");
+                    valid = false;
+                }
+
+                if (type === "whatsapp" && !isValidWhatsapp(value)) {
+                    setFieldError(field, "Nomor WhatsApp tidak valid.");
+                    valid = false;
+                }
+            });
 
             const checkbox = document.getElementById("kontak-persetujuan");
             const checkboxError = document.querySelector(".kontak-error--checkbox");
