@@ -1,4 +1,9 @@
 <footer class="site-footer" id="kontak">
+    @php
+        $waDisplay = '0851 1999 5965';
+        $waLink = 'https://wa.me/6285119995965';
+        $email = 'info@otobiz.co.id';
+    @endphp
     <div class="container footer-wrap">
         <div class="footer-brand">
             <img src="{{ asset('assets/images/logo_otobiz-no_bg.png') }}" alt="Logo OTOBIZ" class="footer-brand__image" />
@@ -13,8 +18,8 @@
         </nav>
 
         <div class="footer-contact">
-            <p>Email: info@otobiz.co.id</p>
-            <p>WhatsApp: +62 8xx xxxx xxxx</p>
+            <p>Email: <a href="mailto:{{ $email }}">{{ $email }}</a></p>
+            <p>WhatsApp: <a href="{{ $waLink }}">{{ $waDisplay }}</a></p>
             <p>Senin - Jumat: 09.00 - 17.00</p>
         </div>
     </div>

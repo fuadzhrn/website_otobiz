@@ -1,5 +1,8 @@
 <section class="contact-hub-section" id="contact-hub" aria-labelledby="contact-hub-title">
     @php
+        $waDisplay = '0851 1999 5965';
+        $waLink = 'https://wa.me/6285119995965';
+        $email = 'info@otobiz.co.id';
         $fieldMap = [
             'full_name' => ['id' => 'kontak-nama', 'name' => 'full_name', 'validate' => null, 'full' => false],
             'email' => ['id' => 'kontak-email', 'name' => 'email', 'validate' => 'email', 'full' => false],
@@ -30,8 +33,8 @@
         $resolvedSupportCards = ($supportCards ?? collect())->count()
             ? $supportCards
             : collect([
-                (object) ['title' => 'WhatsApp Support', 'contact_value' => '+62 8xx-xxxx-xxxx', 'button_text' => 'Chat Sekarang', 'button_link' => '#', 'icon' => 'bi bi-whatsapp'],
-                (object) ['title' => 'Email Assistance', 'contact_value' => 'hello@otobiz.co.id', 'button_text' => 'Kirim Email', 'button_link' => '#', 'icon' => 'bi bi-envelope'],
+                (object) ['title' => 'WhatsApp Support', 'contact_value' => $waDisplay, 'button_text' => 'Chat Sekarang', 'button_link' => $waLink, 'icon' => 'bi bi-whatsapp'],
+                (object) ['title' => 'Email Assistance', 'contact_value' => $email, 'button_text' => 'Kirim Email', 'button_link' => $waLink, 'icon' => 'bi bi-envelope'],
                 (object) ['title' => 'Jam Layanan / Sales Consultation', 'contact_value' => 'Senin-Jumat, 09.00-17.00', 'button_text' => 'Jadwalkan Konsultasi', 'button_link' => '#', 'icon' => 'bi bi-clock'],
             ]);
 
@@ -47,6 +50,17 @@
         $locationRows = $resolvedLocations->whereIn('location_type', ['ho', 'pool'])->values();
         $firstLocation = $locationRows->get(0);
         $secondLocation = $locationRows->get(1);
+        $defaultMapLink = 'https://www.google.com/maps/place/Werkspace+Soho+Capital/@-6.1745788,106.7872236,17z';
+
+        $firstLocationLink = $firstLocation->button_link ?? '#';
+        if ($firstLocationLink === '#') {
+            $firstLocationLink = $defaultMapLink;
+        }
+
+        $secondLocationLink = $secondLocation->button_link ?? '#';
+        if ($secondLocationLink === '#') {
+            $secondLocationLink = $waLink;
+        }
     @endphp
     <div class="container">
         <h2 class="sr-only" id="contact-hub-title">Pusat Kontak dan Support OTOBIZ</h2>
@@ -127,13 +141,21 @@
                     @endforeach
 
                     <div class="lokasi-map-placeholder">
-                        <i class="bi bi-map"></i>
-                        <span>Preview Lokasi</span>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4896.361393331845!2d106.78722357585323!3d-6.17457879381281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f72f421b40d7%3A0xa2260e416b98e583!2sWerkspace%20Soho%20Capital!5e1!3m2!1sid!2sid!4v1775453337775!5m2!1sid!2sid"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Lokasi Werkspace Soho Capital"
+                        ></iframe>
                     </div>
 
                     <div class="lokasi-card__actions">
-                        <a href="{{ $firstLocation->button_link ?? '#' }}" class="btn kontak-btn kontak-btn--ghost">{{ $firstLocation->button_text ?? 'Lihat Lokasi' }}</a>
-                        <a href="{{ $secondLocation->button_link ?? '#' }}" class="btn kontak-btn kontak-btn--ghost">{{ $secondLocation->button_text ?? 'Hubungi Admin Lokasi' }}</a>
+                        <a href="{{ $firstLocationLink }}" class="btn kontak-btn kontak-btn--ghost" target="_blank" rel="noopener">{{ $firstLocation->button_text ?? 'Lihat Lokasi' }}</a>
+                        <a href="{{ $secondLocationLink }}" class="btn kontak-btn kontak-btn--ghost">{{ $secondLocation->button_text ?? 'Hubungi Admin Lokasi' }}</a>
                     </div>
                 </article>
 
@@ -145,13 +167,28 @@
 
                     <div class="support-card-list">
                         @foreach ($resolvedSupportCards as $card)
+                            @php
+                                $cardLink = $card->button_link ?: '#';
+                                $cardButtonText = Illuminate\Support\Str::lower((string) ($card->button_text ?? ''));
+                                $cardTitleText = Illuminate\Support\Str::lower((string) ($card->title ?? ''));
+                                $cardValue = $card->contact_value;
+                                if ($cardLink === '#' || Illuminate\Support\Str::contains($cardButtonText, ['hubungi', 'konsultasi', 'pesan', 'chat'])) {
+                                    $cardLink = $waLink;
+                                }
+                                if (Illuminate\Support\Str::contains($cardTitleText, 'whatsapp')) {
+                                    $cardValue = $waDisplay;
+                                }
+                                if (Illuminate\Support\Str::contains($cardTitleText, 'email')) {
+                                    $cardValue = $email;
+                                }
+                            @endphp
                             <article class="support-card">
                                 <i class="{{ $card->icon ?: 'bi bi-headset' }}"></i>
                                 <div>
                                     <h4>{{ $card->title }}</h4>
-                                    <p>{{ $card->contact_value }}</p>
+                                    <p>{{ $cardValue }}</p>
                                 </div>
-                                <a href="{{ $card->button_link ?: '#' }}" class="support-card__link">{{ $card->button_text ?: 'Hubungi' }}</a>
+                                <a href="{{ $cardLink }}" class="support-card__link">{{ $card->button_text ?: 'Hubungi' }}</a>
                             </article>
                         @endforeach
                     </div>

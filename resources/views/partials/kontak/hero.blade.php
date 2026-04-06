@@ -1,5 +1,6 @@
 <section class="kontak-hero" id="kontak-hero" aria-labelledby="kontak-hero-title">
     @php
+        $waLink = 'https://wa.me/6285119995965';
         $resolvedQuickCards = ($quickCards ?? collect())->count()
             ? $quickCards
             : collect([
@@ -15,7 +16,7 @@
             <p class="kontak-hero__desc">
                 {{ $contactContent->hero_description ?? 'Dari pertanyaan awal, kebutuhan konsultasi, hingga informasi lokasi dan layanan support, tim OTOBIZ siap membantu Anda dengan lebih cepat dan terarah.' }}
             </p>
-            <a href="{{ $contactContent->hero_small_button_link ?? '#contact-form' }}" class="btn kontak-btn kontak-btn--primary js-kontak-scroll">{{ $contactContent->hero_small_button_text ?? 'Kirim Pesan' }}</a>
+            <a href="{{ $waLink }}" class="btn kontak-btn kontak-btn--primary">{{ $contactContent->hero_small_button_text ?? 'Kirim Pesan' }}</a>
         </div>
 
         <div class="kontak-hero__quick fade-up delay-1">

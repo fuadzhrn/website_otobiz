@@ -45,9 +45,10 @@
                     $category = (string) ($item->category ?? '');
                     $categorySlug = Illuminate\Support\Str::slug($category ?: 'lainnya');
                     $isEv = strtolower($category) === 'ev';
+                    $unitImage = $item->main_image_url ?? $item->main_image;
                 @endphp
                 <article class="produk-unit-card fade-up {{ $index === 1 ? 'delay-1' : '' }}" data-category="{{ $categorySlug }}">
-                    <img src="{{ $item->main_image }}" alt="{{ $item->name }}" class="produk-unit-card__image" />
+                    <img src="{{ $unitImage }}" alt="{{ $item->name }}" class="produk-unit-card__image" />
                     <div class="produk-unit-card__body">
                         <div class="produk-unit-card__badges">
                             <span class="produk-unit-card__badge {{ $isEv ? 'produk-unit-card__badge--ev' : '' }}">{{ $item->badge_text ?? ($isEv ? 'EV' : 'Konvensional') }}</span>

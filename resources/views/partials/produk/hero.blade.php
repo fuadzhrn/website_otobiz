@@ -1,4 +1,7 @@
 <section class="produk-hero" id="produk-hero" aria-labelledby="produk-hero-title">
+    @php
+        $waLink = 'https://wa.me/6285119995965';
+    @endphp
     <div class="container produk-hero__wrap">
         <div class="produk-hero__content fade-up is-visible">
             <p class="produk-hero__badge">{{ $productContent->hero_badge_text ?? 'OTOBIZ Product Line' }}</p>
@@ -7,7 +10,7 @@
                 {{ $productContent->hero_description ?? 'Dari kendaraan konvensional hingga EV, OTOBIZ membantu Anda memiliki aset yang bekerja secara profesional.' }}
             </p>
             <div class="produk-hero__actions">
-                <a href="{{ $productContent->hero_primary_button_link ?? '#produk-simulation' }}" class="btn produk-btn produk-btn--primary">{{ $productContent->hero_primary_button_text ?? 'Konsultasi Sekarang' }}</a>
+                <a href="{{ $waLink }}" class="btn produk-btn produk-btn--primary">{{ $productContent->hero_primary_button_text ?? 'Konsultasi Sekarang' }}</a>
                 <a href="{{ $productContent->hero_secondary_button_link ?? '#produk-packages' }}" class="btn produk-btn produk-btn--ghost">{{ $productContent->hero_secondary_button_text ?? 'Pilih Paket' }}</a>
             </div>
             <p class="produk-hero__trust">{{ $productContent->hero_trust_text ?? 'Terstruktur. Transparan. Berorientasi aset jangka panjang.' }}</p>

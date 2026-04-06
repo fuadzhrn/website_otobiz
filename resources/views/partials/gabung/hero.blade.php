@@ -1,5 +1,6 @@
 <section class="gabung-hero" id="gabung-hero" aria-labelledby="gabung-hero-title">
     @php
+        $waLink = 'https://wa.me/6285119995965';
         $heroBadges = array_values(array_filter([
             $joinContent->hero_badge_one ?? null,
             $joinContent->hero_badge_two ?? null,
@@ -15,7 +16,7 @@
             </p>
             <div class="gabung-hero__actions">
                 <a href="{{ $joinContent->hero_primary_button_link ?? '#gabung-form' }}" class="btn gabung-btn gabung-btn--primary js-scroll-to-form">{{ $joinContent->hero_primary_button_text ?? 'Isi Formulir' }}</a>
-                <a href="{{ $joinContent->hero_secondary_button_link ?? '#gabung-sales' }}" class="btn gabung-btn gabung-btn--ghost">{{ $joinContent->hero_secondary_button_text ?? 'Konsultasi Sekarang' }}</a>
+                <a href="{{ $waLink }}" class="btn gabung-btn gabung-btn--ghost">{{ $joinContent->hero_secondary_button_text ?? 'Konsultasi Sekarang' }}</a>
             </div>
             <div class="gabung-hero__labels">
                 @forelse ($heroBadges as $badge)

@@ -13,6 +13,8 @@ class JoinContentSeeder extends Seeder
 {
     public function run(): void
     {
+        $waLink = 'https://wa.me/6285119995965';
+
         JoinContent::query()->updateOrCreate(
             ['id' => 1],
             [
@@ -24,7 +26,7 @@ class JoinContentSeeder extends Seeder
                 'hero_primary_button_text' => 'Isi Formulir',
                 'hero_primary_button_link' => '#gabung-form',
                 'hero_secondary_button_text' => 'Konsultasi Sekarang',
-                'hero_secondary_button_link' => '#gabung-sales',
+                'hero_secondary_button_link' => $waLink,
                 'registration_section_title' => 'Form Pendaftaran',
                 'registration_section_description' => 'Lengkapi data Anda untuk memulai proses konsultasi dan pendaftaran kemitraan bersama OTOBIZ.',
                 'registration_form_note' => 'Data Anda akan diproses oleh tim OTOBIZ untuk tahap konsultasi awal.',
@@ -39,7 +41,7 @@ class JoinContentSeeder extends Seeder
                 'cta_primary_button_text' => 'Isi Formulir Sekarang',
                 'cta_primary_button_link' => '#gabung-form',
                 'cta_secondary_button_text' => 'Hubungi Tim Kami',
-                'cta_secondary_button_link' => '#gabung-sales',
+                'cta_secondary_button_link' => $waLink,
             ]
         );
 
@@ -213,7 +215,7 @@ class JoinContentSeeder extends Seeder
                 'contact_label' => 'Jam layanan',
                 'contact_value' => 'Senin-Jumat, 09.00-17.00',
                 'button_text' => 'Jadwalkan Konsultasi',
-                'button_link' => '#',
+                'button_link' => $waLink,
                 'sort_order' => 1,
                 'is_active' => true,
             ],
@@ -222,9 +224,9 @@ class JoinContentSeeder extends Seeder
                 'description' => 'Dapatkan respons cepat untuk pertanyaan awal seputar proses bergabung.',
                 'icon' => 'bi bi-whatsapp',
                 'contact_label' => 'WhatsApp',
-                'contact_value' => '+62 8xx-xxxx-xxxx',
+                'contact_value' => '0851 1999 5965',
                 'button_text' => 'Hubungi Sekarang',
-                'button_link' => '#',
+                'button_link' => $waLink,
                 'sort_order' => 2,
                 'is_active' => true,
             ],
@@ -233,9 +235,9 @@ class JoinContentSeeder extends Seeder
                 'description' => 'Kirim kebutuhan Anda dan tim OTOBIZ akan membantu dengan rekomendasi program.',
                 'icon' => 'bi bi-envelope',
                 'contact_label' => 'Email',
-                'contact_value' => 'hello@otobiz.co.id',
+                'contact_value' => 'info@otobiz.co.id',
                 'button_text' => 'Kirim Pesan',
-                'button_link' => '#',
+                'button_link' => $waLink,
                 'sort_order' => 3,
                 'is_active' => true,
             ],

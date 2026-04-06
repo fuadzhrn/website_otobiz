@@ -14,7 +14,7 @@
 
             <div class="about-intro__image fade-up delay-1">
                 <div class="about-intro__image-placeholder">
-                    <i class="bi bi-car-front"></i>
+                    <img src="{{ asset('assets/images/VF-e34-Samping-Putih.png') }}" alt="VinFast VF e34 samping putih" />
                 </div>
             </div>
         </div>

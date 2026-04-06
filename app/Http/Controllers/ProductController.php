@@ -7,12 +7,25 @@ use App\Models\ProductPackage;
 use App\Models\ProductSimulationContent;
 use App\Models\ProductSimulationHighlight;
 use App\Models\ProductUnit;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
     public function index()
     {
+        $toPublicImageUrl = function (?string $path): ?string {
+            if (!$path) {
+                return null;
+            }
+
+            if (Str::startsWith($path, ['http://', 'https://', '/'])) {
+                return $path;
+            }
+
+            return Storage::url($path);
+        };
+
         $productContent = ProductContent::query()->first();
 
         $packages = ProductPackage::query()
@@ -75,15 +88,25 @@ class ProductController extends Controller
 
             $images = [];
             foreach ($unit->galleries as $gallery) {
+                $galleryImageUrl = $toPublicImageUrl($gallery->image_path);
+                if (!$galleryImageUrl) {
+                    continue;
+                }
+
                 $images[] = [
-                    $gallery->image_path,
+                    $galleryImageUrl,
                     $gallery->alt_text ?: ('Galeri ' . $unit->name),
                 ];
             }
 
             if (empty($images) && $unit->main_image) {
-                $images[] = [$unit->main_image, $unit->name . ' preview'];
+                $mainImageUrl = $toPublicImageUrl($unit->main_image);
+                if ($mainImageUrl) {
+                    $images[] = [$mainImageUrl, $unit->name . ' preview'];
+                }
             }
+
+            $unit->main_image_url = $toPublicImageUrl($unit->main_image);
 
             $productSpecsData[$specKey] = [
                 'name' => $unit->name,

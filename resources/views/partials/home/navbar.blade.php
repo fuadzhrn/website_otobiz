@@ -1,4 +1,7 @@
 <header class="site-header" id="home">
+    @php
+        $waLink = 'https://wa.me/6285119995965';
+    @endphp
     <div class="container navbar-wrap">
         <a href="{{ route('home') }}" class="brand-logo" aria-label="OTOBIZ Home">
             <img src="{{ asset('assets/images/logo_otobiz-no_bg.png') }}" alt="Logo OTOBIZ" class="brand-logo__image" />
@@ -17,9 +20,9 @@
             <a href="{{ route('produk') }}" class="main-nav__link {{ request()->routeIs('produk') ? 'is-active' : '' }}">Produk</a>
             <a href="{{ route('gabung') }}" class="main-nav__link {{ request()->routeIs('gabung') ? 'is-active' : '' }}">Gabung Mitra</a>
             <a href="{{ route('kontak') }}" class="main-nav__link {{ request()->routeIs('kontak') ? 'is-active' : '' }}">Kontak &amp; Support</a>
-            <a href="{{ route('gabung') }}#gabung-form" class="main-nav__cta">Konsultasi</a>
+            <a href="{{ $waLink }}" class="main-nav__cta">Konsultasi</a>
         </nav>
 
-        <a href="{{ route('gabung') }}#gabung-form" class="btn btn--sm btn--primary">Konsultasi</a>
+        <a href="{{ $waLink }}" class="btn btn--sm btn--primary">Konsultasi</a>
     </div>
 </header>

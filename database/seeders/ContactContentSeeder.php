@@ -14,13 +14,15 @@ class ContactContentSeeder extends Seeder
 {
     public function run(): void
     {
+        $waLink = 'https://wa.me/6285119995965';
+
         ContactContent::query()->updateOrCreate(
             ['id' => 1],
             [
                 'hero_title' => 'Hubungi OTOBIZ dengan Cara yang Paling Nyaman untuk Anda',
                 'hero_description' => 'Dari pertanyaan awal, kebutuhan konsultasi, hingga informasi lokasi dan layanan support, tim OTOBIZ siap membantu Anda dengan lebih cepat dan terarah.',
                 'hero_small_button_text' => 'Kirim Pesan',
-                'hero_small_button_link' => '#contact-form',
+                'hero_small_button_link' => $waLink,
                 'contact_form_title' => 'Form Kontak',
                 'contact_form_description' => 'Sampaikan kebutuhan, pertanyaan, atau tujuan konsultasi Anda. Tim OTOBIZ akan membantu mengarahkan ke layanan yang paling sesuai.',
                 'contact_form_submit_text' => 'Kirim Pesan',
@@ -31,7 +33,7 @@ class ContactContentSeeder extends Seeder
                 'support_highlight_text' => 'Konsultasi awal dan pertanyaan program ditangani secara profesional untuk membantu Anda memilih jalur komunikasi yang paling tepat.',
                 'closing_strip_text' => 'OTOBIZ siap membantu Anda mulai dari pertanyaan awal hingga proses konsultasi lanjutan, dengan komunikasi yang lebih terarah dan profesional.',
                 'closing_strip_button_text' => 'Hubungi Tim Kami',
-                'closing_strip_button_link' => '#contact-form',
+                'closing_strip_button_link' => $waLink,
             ]
         );
 
@@ -133,9 +135,9 @@ class ContactContentSeeder extends Seeder
                 'description' => null,
                 'icon' => 'bi bi-whatsapp',
                 'contact_label' => null,
-                'contact_value' => '+62 8xx-xxxx-xxxx',
+                'contact_value' => '0851 1999 5965',
                 'button_text' => 'Chat Sekarang',
-                'button_link' => '#',
+                'button_link' => $waLink,
                 'sort_order' => 1,
                 'is_active' => true,
             ],
@@ -144,9 +146,9 @@ class ContactContentSeeder extends Seeder
                 'description' => null,
                 'icon' => 'bi bi-envelope',
                 'contact_label' => null,
-                'contact_value' => 'hello@otobiz.co.id',
+                'contact_value' => 'info@otobiz.co.id',
                 'button_text' => 'Kirim Email',
-                'button_link' => '#',
+                'button_link' => $waLink,
                 'sort_order' => 2,
                 'is_active' => true,
             ],
@@ -157,7 +159,7 @@ class ContactContentSeeder extends Seeder
                 'contact_label' => null,
                 'contact_value' => 'Senin-Jumat, 09.00-17.00',
                 'button_text' => 'Jadwalkan Konsultasi',
-                'button_link' => '#',
+                'button_link' => $waLink,
                 'sort_order' => 3,
                 'is_active' => true,
             ],

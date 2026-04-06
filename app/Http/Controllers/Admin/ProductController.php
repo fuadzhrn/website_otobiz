@@ -421,7 +421,7 @@ class ProductController extends Controller
             'nullable',
             'string',
             'max:255',
-            'regex:/^(#[A-Za-z0-9\-_:.]+|\/[A-Za-z0-9\-._~\/]*|https?:\/\/[^\s]+)$/',
+            'regex:/^(#(?:[A-Za-z0-9\-_:.]+)?|\/[A-Za-z0-9\-._~\/]*|https?:\/\/[^\s]+)$/',
         ];
     }
 

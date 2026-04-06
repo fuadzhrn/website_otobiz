@@ -1,4 +1,7 @@
 <section class="mekanisme-hero" id="mekanisme-top" aria-labelledby="mekanisme-hero-title">
+    @php
+        $waLink = 'https://wa.me/6285119995965';
+    @endphp
     <div class="mekanisme-hero__overlay"></div>
     <div class="container mekanisme-hero__content fade-up is-visible">
         <p class="mekanisme-hero__kicker">{{ $mekanismeContent->hero_kicker ?? 'Mekanisme Kemitraan OTOBIZ' }}</p>
@@ -11,7 +14,7 @@
 
         <div class="mekanisme-hero__actions">
             <a href="{{ $mekanismeContent->hero_primary_button_link ?? '#alur-kemitraan' }}" class="btn btn--hero-primary">{{ $mekanismeContent->hero_primary_button_text ?? 'Pelajari Alur Kemitraan' }}</a>
-            <a href="{{ $mekanismeContent->hero_secondary_button_link ?? '#mekanisme-cta' }}" class="btn btn--hero-ghost">{{ $mekanismeContent->hero_secondary_button_text ?? 'Konsultasi Sekarang' }}</a>
+            <a href="{{ $waLink }}" class="btn btn--hero-ghost">{{ $mekanismeContent->hero_secondary_button_text ?? 'Konsultasi Sekarang' }}</a>
         </div>
 
         <div class="mekanisme-hero__trust">
