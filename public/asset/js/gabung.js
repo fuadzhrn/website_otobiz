@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const waNumber = "6285119995965";
     const header = document.querySelector(".site-header");
     const animatedItems = document.querySelectorAll(".fade-up");
     const selectionStepsContainer = document.querySelector("#selection-steps");
@@ -196,10 +197,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            form.reset();
-            if (successMessage) {
-                successMessage.textContent = "Pendaftaran berhasil dikirim. Tim OTOBIZ akan segera menghubungi Anda untuk konsultasi awal.";
-            }
+            const formData = new FormData(form);
+            const getValue = (name) => (formData.get(name) || "").toString().trim();
+
+            const messageLines = [
+                "Halo OTOBIZ, saya ingin mendaftar sebagai mitra.",
+                "",
+                "Data Pendaftaran:",
+                `Nama Lengkap: ${getValue("nama_lengkap") || "-"}`,
+                `Nomor WhatsApp: ${getValue("nomor_whatsapp") || "-"}`,
+                `Email: ${getValue("email") || "-"}`,
+                `Kota / Domisili: ${getValue("kota") || "-"}`,
+                `Pekerjaan: ${getValue("pekerjaan") || "-"}`,
+                `Minat Program: ${getValue("minat_program") || "-"}`,
+                `Budget Awal / Rencana Bergabung: ${getValue("budget_awal") || "-"}`,
+                `Pesan Tambahan: ${getValue("pesan") || "-"}`,
+            ];
+
+            const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(messageLines.join("\n"))}`;
+            window.location.href = waUrl;
         });
     }
 

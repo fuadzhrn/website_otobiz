@@ -1,7 +1,16 @@
 <section class="mekanisme-hero" id="mekanisme-top" aria-labelledby="mekanisme-hero-title">
     @php
         $waLink = 'https://wa.me/6285119995965';
+        $defaultHeroBgImage = 'https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1920&q=80';
+        $heroBgImage = $defaultHeroBgImage;
+
+        if (!empty($mekanismeContent?->hero_background_image)) {
+            $heroBgImage = Illuminate\Support\Str::startsWith($mekanismeContent->hero_background_image, ['http://', 'https://', '/'])
+                ? $mekanismeContent->hero_background_image
+                : Illuminate\Support\Facades\Storage::url($mekanismeContent->hero_background_image);
+        }
     @endphp
+    <div class="mekanisme-hero__bg" style="background-image: url('{{ $heroBgImage }}');" aria-hidden="true"></div>
     <div class="mekanisme-hero__overlay"></div>
     <div class="container mekanisme-hero__content fade-up is-visible">
         <p class="mekanisme-hero__kicker">{{ $mekanismeContent->hero_kicker ?? 'Mekanisme Kemitraan OTOBIZ' }}</p>

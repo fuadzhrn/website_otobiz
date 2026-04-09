@@ -59,11 +59,16 @@
     min-height: 78vh;
     display: flex;
     align-items: center;
-    background-image: url("https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1920&q=80");
+    isolation: isolate;
+}
+
+.mekanisme-hero__bg {
+    position: absolute;
+    inset: 0;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    isolation: isolate;
+    z-index: 0;
 }
 
 .mekanisme-hero__overlay {
@@ -668,6 +673,9 @@
 
     .mekanisme-hero {
         min-height: 62vh;
+    }
+
+    .mekanisme-hero__bg {
         background-position: center right;
     }
 

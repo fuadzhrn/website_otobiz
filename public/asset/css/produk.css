@@ -388,6 +388,16 @@
     object-fit: cover;
 }
 
+@media (min-width: 768px) {
+    .produk-unit-card__image {
+        object-fit: contain;
+        object-position: center;
+        background: #f5f6f8;
+        padding: 10px 14px 0;
+        box-sizing: border-box;
+    }
+}
+
 .produk-unit-card__body {
     padding: 18px;
 }

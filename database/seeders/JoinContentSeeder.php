@@ -23,6 +23,7 @@ class JoinContentSeeder extends Seeder
                 'hero_badge_three' => 'Sistem Transparan',
                 'hero_title' => 'Mulai Langkah Anda Menjadi Mitra OTOBIZ',
                 'hero_description' => 'Isi formulir pendaftaran, pahami proses seleksi, dan konsultasikan kebutuhan Anda bersama tim OTOBIZ untuk memulai kemitraan kendaraan produktif.',
+                'hero_image' => null,
                 'hero_primary_button_text' => 'Isi Formulir',
                 'hero_primary_button_link' => '#gabung-form',
                 'hero_secondary_button_text' => 'Konsultasi Sekarang',

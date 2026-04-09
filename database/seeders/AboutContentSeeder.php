@@ -21,6 +21,7 @@ class AboutContentSeeder extends Seeder
                 'intro_section_title' => 'Membangun Aset Produktif Melalui Kemitraan Kendaraan',
                 'intro_description' => 'OTOBIZ adalah program kemitraan kepemilikan kendaraan yang dirancang untuk membantu masyarakat memiliki aset mobil produktif melalui sistem operasional profesional. Kami percaya bahwa setiap individu berhak memiliki aset berkualitas dengan skema yang transparan, terstruktur, dan berkelanjutan.',
                 'intro_subtext' => 'Dengan pengalaman dalam industri otomotif dan manajemen aset, OTOBIZ hadir untuk membangun ekosistem kemitraan yang saling menguntungkan bagi semua pihak.',
+                'intro_image' => null,
                 'vision_section_title' => 'Visi & Misi',
                 'vision_section_subtitle' => 'Arah dan komitmen OTOBIZ untuk masa depan',
                 'vision_title' => 'Visi Kami',

@@ -27,6 +27,7 @@ class MekanismeContentSeeder extends Seeder
                 'hero_badge_three' => 'Profesional',
                 'hero_title' => 'Mekanisme Kemitraan Kendaraan yang Jelas, Terstruktur, dan Berbasis Operasional Nyata',
                 'hero_description' => 'OTOBIZ menghadirkan sistem kemitraan yang membantu mitra membangun kepemilikan aset kendaraan produktif melalui proses operasional profesional, transparan, dan berorientasi jangka panjang.',
+                'hero_background_image' => null,
                 'hero_primary_button_text' => 'Pelajari Alur Kemitraan',
                 'hero_primary_button_link' => '#alur-kemitraan',
                 'hero_secondary_button_text' => 'Konsultasi Sekarang',

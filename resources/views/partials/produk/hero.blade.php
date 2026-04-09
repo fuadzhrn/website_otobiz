@@ -1,6 +1,14 @@
 <section class="produk-hero" id="produk-hero" aria-labelledby="produk-hero-title">
     @php
         $waLink = 'https://wa.me/6285119995965';
+        $defaultHeroImage = 'https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=80';
+        $heroImage = $defaultHeroImage;
+
+        if (!empty($productContent?->hero_image)) {
+            $heroImage = Illuminate\Support\Str::startsWith($productContent->hero_image, ['http://', 'https://', '/'])
+                ? $productContent->hero_image
+                : Illuminate\Support\Facades\Storage::url($productContent->hero_image);
+        }
     @endphp
     <div class="container produk-hero__wrap">
         <div class="produk-hero__content fade-up is-visible">
@@ -17,7 +25,7 @@
         </div>
 
         <div class="produk-hero__visual fade-up delay-1">
-            <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?auto=format&fit=crop&w=1200&q=80" alt="Kendaraan kemitraan OTOBIZ" class="produk-hero__image" />
+            <img src="{{ $heroImage }}" alt="Kendaraan kemitraan OTOBIZ" class="produk-hero__image" />
         </div>
     </div>
 </section>

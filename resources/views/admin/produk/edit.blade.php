@@ -58,10 +58,10 @@
     <section class="section-card">
         <div class="section-head">
             <h2 class="section-title">1. Konten Utama Produk</h2>
-            <p class="section-subtitle">Mengatur hero, judul section, dan CTA halaman Produk.</p>
+            <p class="section-subtitle">Mengatur hero, gambar hero, judul section, dan CTA halaman Produk.</p>
         </div>
         <div class="section-body">
-            <form method="POST" action="{{ route('admin.produk.update') }}" class="stack-form">
+            <form method="POST" action="{{ route('admin.produk.update') }}" class="stack-form" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="form_section" value="main_content">
@@ -78,6 +78,20 @@
                     <div class="form-group full">
                         <label>Hero Description</label>
                         <textarea name="hero_description" required>{{ old('hero_description', $productContent->hero_description) }}</textarea>
+                    </div>
+                    <div class="form-group full">
+                        <label>Hero Image (opsional)</label>
+                        <input type="file" name="hero_image" accept="image/png,image/jpeg,image/webp">
+                        @if (!empty($productContent->hero_image))
+                            @php
+                                $heroImagePreview = Illuminate\Support\Str::startsWith($productContent->hero_image, ['http://', 'https://', '/'])
+                                    ? $productContent->hero_image
+                                    : Storage::url($productContent->hero_image);
+                            @endphp
+                            <p style="margin-top:8px;margin-bottom:8px;font-size:0.88rem;color:#5a5f68;">Preview gambar hero saat ini:</p>
+                            <img src="{{ $heroImagePreview }}" alt="Preview Hero Produk" class="image-preview">
+                            <label class="checkbox-label" style="margin-top:10px;"><input type="checkbox" name="remove_hero_image" value="1"> Hapus gambar hero saat ini</label>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>Hero Primary Button Text</label>

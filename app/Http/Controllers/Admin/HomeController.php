@@ -9,6 +9,8 @@ use App\Models\HomeSummaryStep;
 use App\Models\HomeValueItem;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class HomeController extends Controller
@@ -39,6 +41,8 @@ class HomeController extends Controller
             'hero_badge_text' => ['nullable', 'string', 'max:255'],
             'hero_title' => ['required', 'string', 'max:255'],
             'hero_description' => ['required', 'string'],
+            'hero_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+            'remove_hero_image' => ['nullable', 'boolean'],
             'hero_primary_button_text' => ['required', 'string', 'max:100'],
             'hero_primary_button_link' => $this->linkRules(),
             'hero_secondary_button_text' => ['required', 'string', 'max:100'],
@@ -54,6 +58,9 @@ class HomeController extends Controller
             'cta_button_text' => ['required', 'string', 'max:100'],
             'cta_button_link' => $this->linkRules(),
         ], [
+            'hero_image.image' => 'File hero image harus berupa gambar.',
+            'hero_image.mimes' => 'Format hero image harus jpg, jpeg, png, atau webp.',
+            'hero_image.max' => 'Ukuran hero image maksimal 4MB.',
             'hero_primary_button_link.regex' => 'Format link tombol utama tidak valid.',
             'hero_secondary_button_link.regex' => 'Format link tombol kedua tidak valid.',
             'cta_button_link.regex' => 'Format link tombol CTA tidak valid.',
@@ -65,7 +72,23 @@ class HomeController extends Controller
             $homeContent = HomeContent::query()->create([]);
         }
 
-        $homeContent->update($validated);
+        $updateData = $validated;
+        unset($updateData['hero_image'], $updateData['remove_hero_image']);
+
+        if ($request->boolean('remove_hero_image') && !empty($homeContent->hero_image) && !Str::startsWith($homeContent->hero_image, ['http://', 'https://', '/'])) {
+            Storage::disk('public')->delete($homeContent->hero_image);
+            $updateData['hero_image'] = null;
+        }
+
+        if ($request->hasFile('hero_image')) {
+            if (!empty($homeContent->hero_image) && !Str::startsWith($homeContent->hero_image, ['http://', 'https://', '/'])) {
+                Storage::disk('public')->delete($homeContent->hero_image);
+            }
+
+            $updateData['hero_image'] = $request->file('hero_image')->store('home/hero', 'public');
+        }
+
+        $homeContent->update($updateData);
 
         return back()->with('success', 'Konten Home berhasil diperbarui.');
     }

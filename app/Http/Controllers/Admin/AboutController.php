@@ -8,6 +8,8 @@ use App\Models\AboutMission;
 use App\Models\AboutValue;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class AboutController extends Controller
@@ -47,9 +49,27 @@ class AboutController extends Controller
             $validated = $request->validate([
                 'intro_section_title' => ['required', 'string', 'max:255'],
                 'intro_description' => ['required', 'string'],
+                'intro_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+                'remove_intro_image' => ['nullable', 'boolean'],
             ]);
 
-            $aboutContent->update($validated);
+            $updateData = $validated;
+            unset($updateData['intro_image'], $updateData['remove_intro_image']);
+
+            if ($request->boolean('remove_intro_image') && !empty($aboutContent->intro_image) && !Str::startsWith($aboutContent->intro_image, ['http://', 'https://', '/'])) {
+                Storage::disk('public')->delete($aboutContent->intro_image);
+                $updateData['intro_image'] = null;
+            }
+
+            if ($request->hasFile('intro_image')) {
+                if (!empty($aboutContent->intro_image) && !Str::startsWith($aboutContent->intro_image, ['http://', 'https://', '/'])) {
+                    Storage::disk('public')->delete($aboutContent->intro_image);
+                }
+
+                $updateData['intro_image'] = $request->file('intro_image')->store('about/intro', 'public');
+            }
+
+            $aboutContent->update($updateData);
 
             return back()->with('success', 'Konten intro berhasil diperbarui.');
         }

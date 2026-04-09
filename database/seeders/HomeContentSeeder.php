@@ -21,6 +21,7 @@ class HomeContentSeeder extends Seeder
                 'hero_badge_text' => 'Kemitraan Aset Produktif Berbasis Operasional Nyata',
                 'hero_title' => 'Bangun Aset Kendaraan Anda Bersama Sistem Kemitraan yang Terukur',
                 'hero_description' => 'OTOBIZ menghadirkan model kemitraan kepemilikan kendaraan yang dikelola profesional, dengan alur operasional jelas, laporan berkala, dan pendampingan agar unit berkembang menjadi aset jangka panjang yang produktif.',
+                'hero_image' => null,
                 'hero_primary_button_text' => 'Gabung Mitra',
                 'hero_primary_button_link' => '#gabung',
                 'hero_secondary_button_text' => 'Pelajari Kemitraan',

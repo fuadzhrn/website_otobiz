@@ -1,6 +1,14 @@
 <section class="gabung-hero" id="gabung-hero" aria-labelledby="gabung-hero-title">
     @php
         $waLink = 'https://wa.me/6285119995965';
+        $defaultHeroImage = 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80';
+        $heroImage = $defaultHeroImage;
+
+        if (!empty($joinContent?->hero_image)) {
+            $heroImage = Illuminate\Support\Str::startsWith($joinContent->hero_image, ['http://', 'https://', '/'])
+                ? $joinContent->hero_image
+                : Illuminate\Support\Facades\Storage::url($joinContent->hero_image);
+        }
         $heroBadges = array_values(array_filter([
             $joinContent->hero_badge_one ?? null,
             $joinContent->hero_badge_two ?? null,
@@ -30,7 +38,7 @@
         </div>
 
         <div class="gabung-hero__visual fade-up delay-1">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80" alt="Tim konsultasi kemitraan OTOBIZ" class="gabung-hero__image" />
+            <img src="{{ $heroImage }}" alt="Tim konsultasi kemitraan OTOBIZ" class="gabung-hero__image" />
         </div>
     </div>
 </section>

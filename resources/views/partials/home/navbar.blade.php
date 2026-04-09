@@ -20,9 +20,9 @@
             <a href="{{ route('produk') }}" class="main-nav__link {{ request()->routeIs('produk') ? 'is-active' : '' }}">Produk</a>
             <a href="{{ route('gabung') }}" class="main-nav__link {{ request()->routeIs('gabung') ? 'is-active' : '' }}">Gabung Mitra</a>
             <a href="{{ route('kontak') }}" class="main-nav__link {{ request()->routeIs('kontak') ? 'is-active' : '' }}">Kontak &amp; Support</a>
-            <a href="{{ $waLink }}" class="main-nav__cta">Konsultasi</a>
+            <a href="{{ $waLink }}" class="main-nav__cta"><i class="bi bi-whatsapp"></i><span>Konsultasi</span></a>
         </nav>
 
-        <a href="{{ $waLink }}" class="btn btn--sm btn--primary">Konsultasi</a>
+        <a href="{{ $waLink }}" class="btn btn--sm btn--primary"><i class="bi bi-whatsapp"></i><span>Konsultasi</span></a>
     </div>
 </header>

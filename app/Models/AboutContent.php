@@ -14,6 +14,7 @@ class AboutContent extends Model
         'intro_section_title',
         'intro_description',
         'intro_subtext',
+        'intro_image',
         'vision_section_title',
         'vision_section_subtitle',
         'vision_title',

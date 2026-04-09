@@ -13,6 +13,7 @@ class ProductContent extends Model
         'hero_badge_text',
         'hero_title',
         'hero_description',
+        'hero_image',
         'hero_primary_button_text',
         'hero_primary_button_link',
         'hero_secondary_button_text',

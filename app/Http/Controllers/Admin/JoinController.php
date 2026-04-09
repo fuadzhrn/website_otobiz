@@ -11,6 +11,8 @@ use App\Models\JoinSelectionStep;
 use App\Models\JoinSelectionStepPoint;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -59,6 +61,9 @@ class JoinController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validate($this->joinContentRules(), [
+            'hero_image.image' => 'File hero image harus berupa gambar.',
+            'hero_image.mimes' => 'Format hero image harus jpg, jpeg, png, atau webp.',
+            'hero_image.max' => 'Ukuran hero image maksimal 4MB.',
             'hero_primary_button_link.regex' => 'Format link tombol utama hero tidak valid.',
             'hero_secondary_button_link.regex' => 'Format link tombol kedua hero tidak valid.',
             'cta_primary_button_link.regex' => 'Format link tombol utama CTA tidak valid.',
@@ -70,7 +75,23 @@ class JoinController extends Controller
             $joinContent = JoinContent::query()->create([]);
         }
 
-        $joinContent->update($validated);
+        $updateData = $validated;
+        unset($updateData['hero_image'], $updateData['remove_hero_image']);
+
+        if ($request->boolean('remove_hero_image') && !empty($joinContent->hero_image) && !Str::startsWith($joinContent->hero_image, ['http://', 'https://', '/'])) {
+            Storage::disk('public')->delete($joinContent->hero_image);
+            $updateData['hero_image'] = null;
+        }
+
+        if ($request->hasFile('hero_image')) {
+            if (!empty($joinContent->hero_image) && !Str::startsWith($joinContent->hero_image, ['http://', 'https://', '/'])) {
+                Storage::disk('public')->delete($joinContent->hero_image);
+            }
+
+            $updateData['hero_image'] = $request->file('hero_image')->store('join/hero', 'public');
+        }
+
+        $joinContent->update($updateData);
 
         return back()->with('success', 'Konten utama Gabung Mitra berhasil diperbarui.');
     }
@@ -250,6 +271,8 @@ class JoinController extends Controller
             'hero_badge_three' => ['nullable', 'string', 'max:255'],
             'hero_title' => ['required', 'string', 'max:255'],
             'hero_description' => ['required', 'string'],
+            'hero_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+            'remove_hero_image' => ['nullable', 'boolean'],
             'hero_primary_button_text' => ['nullable', 'string', 'max:100'],
             'hero_primary_button_link' => $this->linkRules(),
             'hero_secondary_button_text' => ['nullable', 'string', 'max:100'],

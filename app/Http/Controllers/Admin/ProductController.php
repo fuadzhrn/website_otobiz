@@ -77,6 +77,9 @@ class ProductController extends Controller
 
         if ($formSection === 'main_content') {
             $validated = $request->validate($this->productContentRules(), [
+                'hero_image.image' => 'File hero image harus berupa gambar.',
+                'hero_image.mimes' => 'Format hero image harus jpg, jpeg, png, atau webp.',
+                'hero_image.max' => 'Ukuran hero image maksimal 4MB.',
                 'hero_primary_button_link.regex' => 'Format link tombol utama tidak valid.',
                 'hero_secondary_button_link.regex' => 'Format link tombol kedua tidak valid.',
                 'cta_primary_button_link.regex' => 'Format link CTA utama tidak valid.',
@@ -89,7 +92,23 @@ class ProductController extends Controller
                 $content = ProductContent::query()->create([]);
             }
 
-            $content->update($validated);
+            $updateData = $validated;
+            unset($updateData['hero_image'], $updateData['remove_hero_image']);
+
+            if ($request->boolean('remove_hero_image') && !empty($content->hero_image) && !Str::startsWith($content->hero_image, ['http://', 'https://', '/'])) {
+                Storage::disk('public')->delete($content->hero_image);
+                $updateData['hero_image'] = null;
+            }
+
+            if ($request->hasFile('hero_image')) {
+                if (!empty($content->hero_image) && !Str::startsWith($content->hero_image, ['http://', 'https://', '/'])) {
+                    Storage::disk('public')->delete($content->hero_image);
+                }
+
+                $updateData['hero_image'] = $request->file('hero_image')->store('products/hero', 'public');
+            }
+
+            $content->update($updateData);
 
             return back()->with('success', 'Konten utama Produk berhasil diperbarui.');
         }
@@ -294,6 +313,8 @@ class ProductController extends Controller
             'hero_badge_text' => ['nullable', 'string', 'max:255'],
             'hero_title' => ['required', 'string', 'max:255'],
             'hero_description' => ['required', 'string'],
+            'hero_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+            'remove_hero_image' => ['nullable', 'boolean'],
             'hero_primary_button_text' => ['nullable', 'string', 'max:100'],
             'hero_primary_button_link' => $this->linkRules(),
             'hero_secondary_button_text' => ['nullable', 'string', 'max:100'],

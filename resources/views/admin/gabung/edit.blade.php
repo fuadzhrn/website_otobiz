@@ -45,10 +45,10 @@
     <section class="section-card">
         <div class="section-head">
             <h2 class="section-title">1. Konten Utama Gabung Mitra</h2>
-            <p class="section-subtitle">Konten ini langsung dipakai di halaman user Gabung Mitra.</p>
+            <p class="section-subtitle">Konten ini langsung dipakai di halaman user Gabung Mitra, termasuk gambar hero.</p>
         </div>
         <div class="section-body">
-            <form method="POST" action="{{ route('admin.gabung.update') }}" class="stack-form">
+            <form method="POST" action="{{ route('admin.gabung.update') }}" class="stack-form" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -58,6 +58,20 @@
                     <div class="form-group"><label>Hero Badge Three</label><input type="text" name="hero_badge_three" value="{{ old('hero_badge_three', $joinContent->hero_badge_three) }}"></div>
                     <div class="form-group full"><label>Hero Title</label><input type="text" name="hero_title" required value="{{ old('hero_title', $joinContent->hero_title) }}"></div>
                     <div class="form-group full"><label>Hero Description</label><textarea name="hero_description" required>{{ old('hero_description', $joinContent->hero_description) }}</textarea></div>
+                    <div class="form-group full">
+                        <label>Hero Image (opsional)</label>
+                        <input type="file" name="hero_image" accept="image/png,image/jpeg,image/webp">
+                        @if (!empty($joinContent->hero_image))
+                            @php
+                                $heroImagePreview = Illuminate\Support\Str::startsWith($joinContent->hero_image, ['http://', 'https://', '/'])
+                                    ? $joinContent->hero_image
+                                    : Storage::url($joinContent->hero_image);
+                            @endphp
+                            <p style="margin-top:8px;margin-bottom:8px;font-size:0.88rem;color:#5a5f68;">Preview gambar hero saat ini:</p>
+                            <img src="{{ $heroImagePreview }}" alt="Preview Hero Gabung" class="image-preview">
+                            <label class="checkbox-label" style="margin-top:10px;"><input type="checkbox" name="remove_hero_image" value="1"> Hapus gambar hero saat ini</label>
+                        @endif
+                    </div>
                     <div class="form-group"><label>Hero Primary Button Text</label><input type="text" name="hero_primary_button_text" value="{{ old('hero_primary_button_text', $joinContent->hero_primary_button_text) }}"></div>
                     <div class="form-group"><label>Hero Primary Button Link</label><input type="text" name="hero_primary_button_link" value="{{ old('hero_primary_button_link', $joinContent->hero_primary_button_link) }}"></div>
                     <div class="form-group"><label>Hero Secondary Button Text</label><input type="text" name="hero_secondary_button_text" value="{{ old('hero_secondary_button_text', $joinContent->hero_secondary_button_text) }}"></div>

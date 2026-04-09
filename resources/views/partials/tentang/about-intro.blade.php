@@ -1,4 +1,14 @@
 <section class="about-intro" id="tentang-kami" aria-labelledby="about-title">
+    @php
+        $defaultIntroImage = asset('assets/images/VF-e34-Samping-Putih.png');
+        $introImage = $defaultIntroImage;
+
+        if (!empty($aboutContent->intro_image)) {
+            $introImage = Illuminate\Support\Str::startsWith($aboutContent->intro_image, ['http://', 'https://', '/'])
+                ? $aboutContent->intro_image
+                : Illuminate\Support\Facades\Storage::url($aboutContent->intro_image);
+        }
+    @endphp
     <div class="container">
         <div class="about-intro__grid">
             <div class="about-intro__content fade-up">
@@ -14,7 +24,7 @@
 
             <div class="about-intro__image fade-up delay-1">
                 <div class="about-intro__image-placeholder">
-                    <img src="{{ asset('assets/images/VF-e34-Samping-Putih.png') }}" alt="VinFast VF e34 samping putih" />
+                    <img src="{{ $introImage }}" alt="Ilustrasi kendaraan OTOBIZ" />
                 </div>
             </div>
         </div>

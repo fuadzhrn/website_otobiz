@@ -20,6 +20,7 @@ class ProductContentSeeder extends Seeder
                 'hero_badge_text' => 'OTOBIZ Product Line',
                 'hero_title' => 'Pilih Paket Kemitraan Kendaraan Produktif Anda',
                 'hero_description' => 'Dari kendaraan konvensional hingga EV, OTOBIZ membantu Anda memiliki aset yang bekerja secara profesional.',
+                'hero_image' => null,
                 'hero_primary_button_text' => 'Konsultasi Sekarang',
                 'hero_primary_button_link' => '#produk-simulation',
                 'hero_secondary_button_text' => 'Pilih Paket',

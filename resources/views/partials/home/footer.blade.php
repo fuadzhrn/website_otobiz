@@ -11,15 +11,27 @@
         </div>
 
         <nav class="footer-nav" aria-label="Navigasi footer">
-            <a href="#home">Home</a>
-            <a href="#tentang">Tentang Kami</a>
-            <a href="#mekanisme">Mekanisme Kemitraan</a>
-            <a href="#produk">Produk</a>
+            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('tentang') }}">Tentang Kami</a>
+            <a href="{{ route('mekanisme') }}">Mekanisme Kemitraan</a>
+            <a href="{{ route('produk') }}">Produk</a>
+            <a href="{{ route('gabung') }}">Gabung Mitra</a>
+            <a href="{{ route('kontak') }}">Kontak &amp; Support</a>
         </nav>
 
         <div class="footer-contact">
             <p>Email: <a href="mailto:{{ $email }}">{{ $email }}</a></p>
             <p>WhatsApp: <a href="{{ $waLink }}">{{ $waDisplay }}</a></p>
+            <p class="footer-social-links">
+                <a href="https://www.instagram.com/otobiz.id" target="_blank" rel="noopener" aria-label="Instagram OTOBIZ">
+                    <i class="bi bi-instagram"></i>
+                    <span>otobiz.id</span>
+                </a>
+                <a href="https://www.tiktok.com/@otobiz.id" target="_blank" rel="noopener" aria-label="TikTok OTOBIZ">
+                    <i class="bi bi-tiktok"></i>
+                    <span>otobiz.id</span>
+                </a>
+            </p>
             <p>Senin - Jumat: 09.00 - 17.00</p>
         </div>
     </div>

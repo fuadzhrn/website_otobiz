@@ -45,10 +45,10 @@
     <section class="section-card">
         <div class="section-head">
             <h2 class="section-title">Intro / Apa Itu OTOBIZ</h2>
-            <p class="section-subtitle">Mengatur judul dan deskripsi intro. Ilustrasi frontend tetap statis.</p>
+            <p class="section-subtitle">Mengatur judul, deskripsi, dan gambar intro di frontend.</p>
         </div>
         <div class="section-body">
-            <form method="POST" action="{{ route('admin.tentang.update') }}">
+            <form method="POST" action="{{ route('admin.tentang.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <input type="hidden" name="form_section" value="intro">
@@ -62,6 +62,21 @@
                     <div class="form-group full">
                         <label for="intro_description">Intro Description</label>
                         <textarea id="intro_description" name="intro_description" required>{{ old('intro_description', $aboutContent->intro_description) }}</textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="intro_image">Gambar Intro (opsional)</label>
+                        <input type="file" id="intro_image" name="intro_image" accept="image/png,image/jpeg,image/webp">
+                        @if (!empty($aboutContent->intro_image))
+                            @php
+                                $introImagePreview = Illuminate\Support\Str::startsWith($aboutContent->intro_image, ['http://', 'https://', '/'])
+                                    ? $aboutContent->intro_image
+                                    : Illuminate\Support\Facades\Storage::url($aboutContent->intro_image);
+                            @endphp
+                            <p style="margin-top:8px;margin-bottom:8px;font-size:0.88rem;color:#5a5f68;">Preview gambar saat ini:</p>
+                            <img src="{{ $introImagePreview }}" alt="Preview Intro Tentang" style="max-width:280px;width:100%;height:auto;border-radius:12px;border:1px solid rgba(68, 68, 74, 0.12);">
+                            <label class="inline-checkbox" style="margin-top:10px;"><input type="checkbox" name="remove_intro_image" value="1"> Hapus gambar intro saat ini</label>
+                        @endif
                     </div>
                 </div>
 

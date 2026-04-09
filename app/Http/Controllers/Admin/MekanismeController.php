@@ -12,6 +12,8 @@ use App\Models\MekanismeFlowStepPoint;
 use App\Models\MekanismeTerm;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class MekanismeController extends Controller
@@ -76,7 +78,24 @@ class MekanismeController extends Controller
         }
 
         $validated = $request->validate($this->contentRules());
-        $content->update($validated);
+
+        $updateData = $validated;
+        unset($updateData['hero_background_image'], $updateData['remove_hero_background_image']);
+
+        if ($request->boolean('remove_hero_background_image') && !empty($content->hero_background_image) && !Str::startsWith($content->hero_background_image, ['http://', 'https://', '/'])) {
+            Storage::disk('public')->delete($content->hero_background_image);
+            $updateData['hero_background_image'] = null;
+        }
+
+        if ($request->hasFile('hero_background_image')) {
+            if (!empty($content->hero_background_image) && !Str::startsWith($content->hero_background_image, ['http://', 'https://', '/'])) {
+                Storage::disk('public')->delete($content->hero_background_image);
+            }
+
+            $updateData['hero_background_image'] = $request->file('hero_background_image')->store('mekanisme/hero', 'public');
+        }
+
+        $content->update($updateData);
 
         return back()->with('success', 'Konten Mekanisme berhasil diperbarui.');
     }
@@ -275,6 +294,8 @@ class MekanismeController extends Controller
             'hero_badge_three' => ['nullable', 'string', 'max:255'],
             'hero_title' => ['required', 'string', 'max:255'],
             'hero_description' => ['required', 'string'],
+            'hero_background_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
+            'remove_hero_background_image' => ['nullable', 'boolean'],
             'hero_primary_button_text' => ['nullable', 'string', 'max:255'],
             'hero_primary_button_link' => $this->linkRules(),
             'hero_secondary_button_text' => ['nullable', 'string', 'max:255'],

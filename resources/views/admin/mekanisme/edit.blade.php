@@ -45,10 +45,10 @@
     <section class="section-card">
         <div class="section-head">
             <h2 class="section-title">1. Hero & CTA Utama</h2>
-            <p class="section-subtitle">Mengatur konten utama hero, heading section, dan CTA penutup Mekanisme.</p>
+            <p class="section-subtitle">Mengatur konten utama hero, gambar background hero, heading section, dan CTA penutup Mekanisme.</p>
         </div>
         <div class="section-body">
-            <form method="POST" action="{{ route('admin.mekanisme.update') }}">
+            <form method="POST" action="{{ route('admin.mekanisme.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -74,6 +74,21 @@
                     <div class="form-group full">
                         <label for="hero_description">Hero Description</label>
                         <textarea id="hero_description" name="hero_description" required>{{ old('hero_description', $content->hero_description) }}</textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="hero_background_image">Hero Background Image (opsional)</label>
+                        <input type="file" id="hero_background_image" name="hero_background_image" accept="image/png,image/jpeg,image/webp">
+                        @if (!empty($content->hero_background_image))
+                            @php
+                                $heroBgPreview = Illuminate\Support\Str::startsWith($content->hero_background_image, ['http://', 'https://', '/'])
+                                    ? $content->hero_background_image
+                                    : Illuminate\Support\Facades\Storage::url($content->hero_background_image);
+                            @endphp
+                            <p style="margin-top:8px;margin-bottom:8px;font-size:0.88rem;color:#5a5f68;">Preview background hero saat ini:</p>
+                            <img src="{{ $heroBgPreview }}" alt="Preview Background Hero Mekanisme" style="max-width:320px;width:100%;height:auto;border-radius:12px;border:1px solid rgba(68, 68, 74, 0.12);">
+                            <label class="inline-checkbox" style="margin-top:10px;"><input type="checkbox" name="remove_hero_background_image" value="1"> Hapus background hero saat ini</label>
+                        @endif
                     </div>
 
                     <div class="form-group">

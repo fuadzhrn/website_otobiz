@@ -48,7 +48,7 @@
             <p class="section-subtitle">Ubah teks utama Home tanpa mengubah layout frontend.</p>
         </div>
         <div class="section-body">
-            <form method="POST" action="{{ route('admin.home.update') }}">
+            <form method="POST" action="{{ route('admin.home.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -65,6 +65,21 @@
                     <div class="form-group full">
                         <label for="hero_description">Hero Description</label>
                         <textarea id="hero_description" name="hero_description" required>{{ old('hero_description', $homeContent->hero_description) }}</textarea>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="hero_image">Hero Image (opsional)</label>
+                        <input type="file" id="hero_image" name="hero_image" accept="image/png,image/jpeg,image/webp">
+                        @if (!empty($homeContent->hero_image))
+                            @php
+                                $heroPreview = Illuminate\Support\Str::startsWith($homeContent->hero_image, ['http://', 'https://', '/'])
+                                    ? $homeContent->hero_image
+                                    : Illuminate\Support\Facades\Storage::url($homeContent->hero_image);
+                            @endphp
+                            <p style="margin-top:8px;margin-bottom:8px;font-size:0.88rem;color:#5a5f68;">Preview gambar saat ini:</p>
+                            <img src="{{ $heroPreview }}" alt="Preview Hero Home" style="max-width:280px;width:100%;height:auto;border-radius:12px;border:1px solid rgba(68, 68, 74, 0.12);">
+                            <label class="inline-checkbox" style="margin-top:10px;"><input type="checkbox" name="remove_hero_image" value="1"> Hapus gambar hero saat ini</label>
+                        @endif
                     </div>
 
                     <div class="form-group">
