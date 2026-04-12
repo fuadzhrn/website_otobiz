@@ -6,6 +6,16 @@
             <p class="produk-head__desc">{{ $productContent->packages_section_description ?? 'Pilih paket sesuai preferensi kendaraan dan target pengembangan aset produktif Anda.' }}</p>
         </div>
 
+        @php
+            $waNumber = '6285119995965';
+            $waBaseUrl = 'https://wa.me/' . $waNumber;
+            $defaultPartnershipMessage = implode("\n", [
+                'Halo OTOBIZ, saya ingin ajukan kemitraan.',
+                '',
+                'Mohon informasi lebih lanjut mengenai skema dan langkah selanjutnya.',
+            ]);
+        @endphp
+
         <div class="produk-package-grid">
             @php
                 $packageItems = ($packages ?? collect())->count() ? $packages : collect([
@@ -47,6 +57,18 @@
             @foreach ($packageItems as $index => $item)
                 @php
                     $isEv = strtolower((string) ($item->category ?? '')) === 'ev';
+                    $packageName = (string) ($item->name ?? 'Paket Kemitraan');
+                    $selectedPackageMessage = implode("\n", [
+                        'Halo OTOBIZ, saya tertarik dengan paket berikut:',
+                        '',
+                        'Nama Paket: ' . $packageName,
+                        'Kategori: ' . ($item->category ?? '-'),
+                        'Harga Kemitraan: ' . ($item->partnership_price ?? '-'),
+                        '',
+                        'Mohon kirimkan detail dan langkah selanjutnya.',
+                    ]);
+                    $selectedPackageLink = $waBaseUrl . '?text=' . urlencode($selectedPackageMessage);
+                    $partnershipLink = $waBaseUrl . '?text=' . urlencode($defaultPartnershipMessage);
                 @endphp
                 <article class="produk-package-card {{ $isEv ? 'produk-package-card--ev' : 'produk-package-card--conv' }} fade-up {{ $index === 1 ? 'delay-1' : '' }}" data-unit-id="{{ $item->product_unit_id ?? '' }}" data-unit-name="{{ $item->unit->name ?? '' }}">
                     <div class="produk-package-card__top">
@@ -71,8 +93,8 @@
                     </ul>
 
                     <div class="produk-package-card__actions">
-                        <a href="{{ $item->cta_link ?? '#' }}" class="btn produk-btn produk-btn--primary">{{ $item->cta_text ?? 'Pilih Paket' }}</a>
-                        <a href="#" class="btn produk-btn produk-btn--ghost-dark">Ajukan Kemitraan</a>
+                        <a href="{{ $selectedPackageLink }}" class="btn produk-btn produk-btn--primary" target="_blank" rel="noopener">{{ $item->cta_text ?? 'Pilih Paket' }}</a>
+                        <a href="{{ $partnershipLink }}" class="btn produk-btn produk-btn--ghost-dark" target="_blank" rel="noopener">Ajukan Kemitraan</a>
                     </div>
                 </article>
             @endforeach
