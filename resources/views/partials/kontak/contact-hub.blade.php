@@ -51,9 +51,9 @@
         $firstLocation = $locationRows->get(0);
         $secondLocation = $locationRows->get(1);
         $defaultMap = [
-            'iframe_src' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4705.370174256262!2d106.81450008826855!3d-6.162016800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5df4e4b52bf%3A0xebf7a077a7aaa01d!2sSmart%20Property%20Group!5e1!3m2!1sid!2sid!4v1776330279672!5m2!1sid!2sid',
-            'button_link' => 'https://www.google.com/maps?q=-6.1620168,106.8145001',
-            'title' => 'Lokasi Smart Property Group',
+            'iframe_src' => 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9792.989699550208!2d106.8203594!3d-6.1601269!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5df4fccc6e7%3A0x66b6d7b7ea79dc8a!2sGajah%20Mada%20Plaza%20Mall!5e1!3m2!1sid!2sid!4v1776335564530!5m2!1sid!2sid',
+            'button_link' => 'https://www.google.com/maps?q=-6.1601269,106.8203594',
+            'title' => 'Lokasi Gajah Mada Plaza Mall',
         ];
 
         $firstLocationLink = $firstLocation->button_link ?? '#';
