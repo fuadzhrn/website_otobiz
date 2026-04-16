@@ -50,11 +50,15 @@
         $locationRows = $resolvedLocations->whereIn('location_type', ['ho', 'pool'])->values();
         $firstLocation = $locationRows->get(0);
         $secondLocation = $locationRows->get(1);
-        $defaultMapLink = 'https://www.google.com/maps/place/Werkspace+Soho+Capital/@-6.1745788,106.7872236,17z';
+        $defaultMap = [
+            'iframe_src' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4705.370174256262!2d106.81450008826855!3d-6.162016800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5df4e4b52bf%3A0xebf7a077a7aaa01d!2sSmart%20Property%20Group!5e1!3m2!1sid!2sid!4v1776330279672!5m2!1sid!2sid',
+            'button_link' => 'https://www.google.com/maps?q=-6.1620168,106.8145001',
+            'title' => 'Lokasi Smart Property Group',
+        ];
 
         $firstLocationLink = $firstLocation->button_link ?? '#';
         if ($firstLocationLink === '#') {
-            $firstLocationLink = $defaultMapLink;
+            $firstLocationLink = $defaultMap['button_link'];
         }
 
         $secondLocationLink = $secondLocation->button_link ?? '#';
@@ -142,14 +146,14 @@
 
                     <div class="lokasi-map-placeholder">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4896.361393331845!2d106.78722357585323!3d-6.17457879381281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f72f421b40d7%3A0xa2260e416b98e583!2sWerkspace%20Soho%20Capital!5e1!3m2!1sid!2sid!4v1775453337775!5m2!1sid!2sid"
+                            src="{{ $defaultMap['iframe_src'] }}" 
                             width="100%"
                             height="100%"
                             style="border:0;"
                             allowfullscreen=""
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"
-                            title="Lokasi Werkspace Soho Capital"
+                            title="{{ $defaultMap['title'] }}"
                         ></iframe>
                     </div>
 
