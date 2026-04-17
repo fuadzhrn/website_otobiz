@@ -6,7 +6,7 @@
     @endphp
     <div class="container footer-wrap">
         <div class="footer-brand">
-            <img src="{{ asset('assets/images/logo_otobiz-no_bg.png') }}" alt="Logo OTOBIZ" class="footer-brand__image" />
+            <img src="{{ asset('assets/images/logo_otobiz-no_bg.png') }}" alt="Logo Otobiz kemitraan kendaraan produktif" class="footer-brand__image" />
             <p class="footer-brand__company">PT DWIMURIA INVESTAMA PROPERTI</p>
             <p class="footer-brand__text">Program kemitraan kepemilikan kendaraan yang profesional dan transparan.</p>
         </div>

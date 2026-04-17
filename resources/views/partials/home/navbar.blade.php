@@ -4,7 +4,7 @@
     @endphp
     <div class="container navbar-wrap">
         <a href="{{ route('home') }}" class="brand-logo" aria-label="OTOBIZ Home">
-            <img src="{{ asset('assets/images/logo_otobiz-no_bg.png') }}" alt="Logo OTOBIZ" class="brand-logo__image" />
+            <img src="{{ asset('assets/images/logo_otobiz-no_bg.png') }}" alt="Logo Otobiz kemitraan kendaraan produktif" class="brand-logo__image" />
         </a>
 
         <button class="nav-toggle" type="button" aria-label="Buka menu navigasi" aria-controls="main-nav" aria-expanded="false">

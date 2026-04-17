@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'OTOBIZ | Produk Kemitraan Kendaraan')
+@section('title', 'Produk | Otobiz')
+@section('seo_description', 'Temukan paket produk Otobiz untuk kemitraan mobil dan kendaraan produktif yang disusun untuk kebutuhan bisnis yang lebih terukur.')
+@section('seo_canonical', route('produk'))
+@section('seo_image', asset('assets/images/logo_otobiz.jpeg'))
+@section('seo_image_alt', 'Otobiz - produk kemitraan kendaraan produktif')
 
 @section('content')
     @include('partials.home.navbar')

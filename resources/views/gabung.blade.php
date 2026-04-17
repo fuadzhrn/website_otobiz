@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'OTOBIZ | Gabung Mitra')
+@section('title', 'Gabung Mitra | Otobiz')
+@section('seo_description', 'Gabung bersama Otobiz dan mulai kemitraan kendaraan produktif dengan proses pendaftaran, konsultasi, dan seleksi yang jelas.')
+@section('seo_canonical', route('gabung'))
+@section('seo_image', asset('assets/images/logo_otobiz.jpeg'))
+@section('seo_image_alt', 'Otobiz - gabung mitra kendaraan produktif')
 
 @section('content')
     @include('partials.home.navbar')

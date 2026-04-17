@@ -38,7 +38,7 @@
         </div>
 
         <div class="gabung-hero__visual fade-up delay-1">
-            <img src="{{ $heroImage }}" alt="Tim konsultasi kemitraan OTOBIZ" class="gabung-hero__image" />
+            <img src="{{ $heroImage }}" alt="Otobiz gabung mitra kendaraan produktif" class="gabung-hero__image" />
         </div>
     </div>
 </section>

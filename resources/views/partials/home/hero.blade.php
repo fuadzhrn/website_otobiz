@@ -28,7 +28,7 @@
             <div class="hero-card">
                 <img
                     src="{{ $heroImage }}"
-                    alt="Visual kendaraan profesional OTOBIZ"
+                    alt="Otobiz kemitraan kepemilikan kendaraan produktif"
                     class="hero-card__image"
                 />
                 <div class="hero-card__overlay">

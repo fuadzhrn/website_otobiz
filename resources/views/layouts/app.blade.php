@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@yield('title', 'OTOBIZ | Kemitraan Kepemilikan Kendaraan')</title>
+    <title>@yield('title', 'Otobiz | Kemitraan Kepemilikan Kendaraan Produktif')</title>
+    @include('partials.seo')
     <link rel="icon" type="image/jpeg" href="{{ asset('assets/images/logo_otobiz.jpeg') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

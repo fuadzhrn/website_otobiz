@@ -25,7 +25,7 @@
         </div>
 
         <div class="produk-hero__visual fade-up delay-1">
-            <img src="{{ $heroImage }}" alt="Kendaraan kemitraan OTOBIZ" class="produk-hero__image" />
+            <img src="{{ $heroImage }}" alt="Otobiz produk kemitraan kendaraan produktif" class="produk-hero__image" />
         </div>
     </div>
 </section>

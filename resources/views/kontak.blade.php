@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'OTOBIZ | Kontak & Support')
+@section('title', 'Kontak & Support | Otobiz')
+@section('seo_description', 'Hubungi Otobiz untuk konsultasi kemitraan mobil, informasi produk, dan dukungan awal bisnis kendaraan secara cepat dan profesional.')
+@section('seo_canonical', route('kontak'))
+@section('seo_image', asset('assets/images/logo_otobiz.jpeg'))
+@section('seo_image_alt', 'Otobiz - kontak dan support kemitraan kendaraan')
 
 @section('content')
     @include('partials.home.navbar')

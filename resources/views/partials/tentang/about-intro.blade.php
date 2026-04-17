@@ -24,7 +24,7 @@
 
             <div class="about-intro__image fade-up delay-1">
                 <div class="about-intro__image-placeholder">
-                    <img src="{{ $introImage }}" alt="Ilustrasi kendaraan OTOBIZ" />
+                    <img src="{{ $introImage }}" alt="Otobiz kemitraan mobil produktif" />
                 </div>
             </div>
         </div>

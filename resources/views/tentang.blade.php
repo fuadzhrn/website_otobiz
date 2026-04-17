@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'OTOBIZ | Tentang Kami - Kemitraan Kepemilikan Kendaraan')
+@section('title', 'Tentang Kami | Otobiz')
+@section('seo_description', 'Pelajari siapa Otobiz, visi, dan nilai kemitraan mobil produktif yang kami bangun untuk mendukung bisnis kendaraan yang berkelanjutan.')
+@section('seo_canonical', route('tentang'))
+@section('seo_image', asset('assets/images/logo_otobiz.jpeg'))
+@section('seo_image_alt', 'Otobiz - tentang kemitraan mobil produktif')
 
 @section('content')
     @include('partials.home.navbar')
