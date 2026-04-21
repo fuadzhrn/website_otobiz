@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin - OTOBIZ</title>
-    <link rel="icon" type="image/jpeg" href="{{ asset('assets/images/logo_otobiz.jpeg') }}">
+    <link rel="icon" type="image/jpeg" href="{{ asset('assets/images/logo_favicon.jpeg') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin-auth.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
