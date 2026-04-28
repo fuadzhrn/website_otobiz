@@ -213,6 +213,13 @@
                         </summary>
                         <div class="item-body">
                             <img class="image-preview" src="{{ $imageUrl($unit->main_image) }}" alt="{{ $unit->name }}">
+                            <form method="POST" action="{{ route('admin.produk.units.toggle', $unit->id) }}" class="row-actions" style="margin-bottom:16px;">
+                                @csrf
+                                <button type="submit" class="btn {{ $unit->is_active ? 'btn-outline' : 'btn-primary' }}">
+                                    {{ $unit->is_active ? 'Nonaktifkan Unit' : 'Aktifkan Unit' }}
+                                </button>
+                                <span class="meta" style="align-self:center;">Status saat ini: {{ $unit->is_active ? 'Aktif' : 'Nonaktif' }}</span>
+                            </form>
                             <form method="POST" action="{{ route('admin.produk.units.update', $unit->id) }}" enctype="multipart/form-data" class="stack-form">
                                 @csrf
                                 @method('PUT')
@@ -276,6 +283,13 @@
                             <div class="editor-item open no-summary">
                                 <div class="item-body">
                                     <img class="image-preview" src="{{ $imageUrl($gallery->image_path) }}" alt="{{ $gallery->alt_text ?: $unit->name }}">
+                                    <form method="POST" action="{{ route('admin.produk.galleries.toggle', $gallery->id) }}" class="row-actions" style="margin-bottom:16px;">
+                                        @csrf
+                                        <button type="submit" class="btn {{ $gallery->is_active ? 'btn-outline' : 'btn-primary' }}">
+                                            {{ $gallery->is_active ? 'Nonaktifkan Galeri' : 'Aktifkan Galeri' }}
+                                        </button>
+                                        <span class="meta" style="align-self:center;">Status saat ini: {{ $gallery->is_active ? 'Aktif' : 'Nonaktif' }}</span>
+                                    </form>
                                     <form method="POST" action="{{ route('admin.produk.galleries.update', $gallery->id) }}" enctype="multipart/form-data" class="stack-form">
                                         @csrf
                                         @method('PUT')
@@ -352,6 +366,13 @@
                             <span class="meta">Unit: {{ $package->unit->name ?? '-' }} | Sort: {{ $package->sort_order }} | {{ $package->is_active ? 'Aktif' : 'Nonaktif' }}</span>
                         </summary>
                         <div class="item-body">
+                            <form method="POST" action="{{ route('admin.produk.packages.toggle', $package->id) }}" class="row-actions" style="margin-bottom:16px;">
+                                @csrf
+                                <button type="submit" class="btn {{ $package->is_active ? 'btn-outline' : 'btn-primary' }}">
+                                    {{ $package->is_active ? 'Nonaktifkan Paket' : 'Aktifkan Paket' }}
+                                </button>
+                                <span class="meta" style="align-self:center;">Status saat ini: {{ $package->is_active ? 'Aktif' : 'Nonaktif' }}</span>
+                            </form>
                             <form method="POST" action="{{ route('admin.produk.packages.update', $package->id) }}" class="stack-form">
                                 @csrf
                                 @method('PUT')

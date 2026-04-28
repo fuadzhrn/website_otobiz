@@ -46,7 +46,7 @@ class LoginController extends Controller
         // Regenerate session after successful login for security
         $request->session()->regenerate();
 
-        return redirect()->intended('/admin/dashboard');
+        return redirect()->route('admin.dashboard');
     }
 
     /**

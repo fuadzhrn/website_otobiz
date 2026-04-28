@@ -109,14 +109,17 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::post('/produk/units', [AdminProductController::class, 'storeUnit'])->name('admin.produk.units.store');
     Route::put('/produk/units/{id}', [AdminProductController::class, 'updateUnit'])->name('admin.produk.units.update');
+    Route::post('/produk/units/{id}/toggle', [AdminProductController::class, 'toggleUnit'])->name('admin.produk.units.toggle');
     Route::delete('/produk/units/{id}', [AdminProductController::class, 'destroyUnit'])->name('admin.produk.units.destroy');
 
     Route::post('/produk/units/{id}/galleries', [AdminProductController::class, 'storeGallery'])->name('admin.produk.galleries.store');
     Route::put('/produk/unit-galleries/{id}', [AdminProductController::class, 'updateGallery'])->name('admin.produk.galleries.update');
+    Route::post('/produk/unit-galleries/{id}/toggle', [AdminProductController::class, 'toggleGallery'])->name('admin.produk.galleries.toggle');
     Route::delete('/produk/unit-galleries/{id}', [AdminProductController::class, 'destroyGallery'])->name('admin.produk.galleries.destroy');
 
     Route::post('/produk/packages', [AdminProductController::class, 'storePackage'])->name('admin.produk.packages.store');
     Route::put('/produk/packages/{id}', [AdminProductController::class, 'updatePackage'])->name('admin.produk.packages.update');
+    Route::post('/produk/packages/{id}/toggle', [AdminProductController::class, 'togglePackage'])->name('admin.produk.packages.toggle');
     Route::delete('/produk/packages/{id}', [AdminProductController::class, 'destroyPackage'])->name('admin.produk.packages.destroy');
 
     Route::post('/produk/packages/{id}/benefits', [AdminProductController::class, 'storeBenefit'])->name('admin.produk.benefits.store');

@@ -176,6 +176,14 @@ class ProductController extends Controller
         return back()->with('success', 'Unit kendaraan berhasil dihapus.');
     }
 
+    public function toggleUnit(int $id): RedirectResponse
+    {
+        $unit = ProductUnit::query()->findOrFail($id);
+        $unit->update(['is_active' => ! $unit->is_active]);
+
+        return back()->with('success', 'Status unit kendaraan berhasil diperbarui.');
+    }
+
     public function storeGallery(Request $request, int $id): RedirectResponse
     {
         $unit = ProductUnit::query()->findOrFail($id);
@@ -216,6 +224,14 @@ class ProductController extends Controller
         return back()->with('success', 'Galeri unit berhasil dihapus.');
     }
 
+    public function toggleGallery(int $id): RedirectResponse
+    {
+        $gallery = ProductUnitGallery::query()->findOrFail($id);
+        $gallery->update(['is_active' => ! $gallery->is_active]);
+
+        return back()->with('success', 'Status galeri unit berhasil diperbarui.');
+    }
+
     public function storePackage(Request $request): RedirectResponse
     {
         $validated = $request->validate($this->packageRules());
@@ -245,6 +261,14 @@ class ProductController extends Controller
         $package->delete();
 
         return back()->with('success', 'Paket kemitraan berhasil dihapus.');
+    }
+
+    public function togglePackage(int $id): RedirectResponse
+    {
+        $package = ProductPackage::query()->findOrFail($id);
+        $package->update(['is_active' => ! $package->is_active]);
+
+        return back()->with('success', 'Status paket kemitraan berhasil diperbarui.');
     }
 
     public function storeBenefit(Request $request, int $id): RedirectResponse
